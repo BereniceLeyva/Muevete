@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>{% block titulo %}Muévete{% endblock %}</title>
+
+  {% load static %}
+
+  <!-- Bootstrap -->
+  <link href="{% static 'inicio/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'inicio/css/menu.css' %}" rel="stylesheet">
+
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+  <!-- Fuente -->
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Scripts de Bootstrap -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  {% block extra_head %}{% endblock %}
+</head>
+
+<body class="{% if request.path == '/' %}inicio{% endif %}">
+
+  <!-- ======= MENÚ SUPERIOR ======= -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top shadow-sm">
+    <div class="container">
+
+      <!-- LOGO (Muévete a la izquierda) -->
+      <a class="navbar-brand fw-bold" href="{% url 'Home' %}">MUÉVETE</a>
+
+      <!-- CONTENIDO DEL MENÚ -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <div class="ms-auto d-flex align-items-center gap-3">
+          <!-- BOTÓN DE INICIAR SESIÓN -->
+          <a href="{% url 'login' %}" class="btn btn-outline-light rounded-pill px-3">
+            Iniciar sesión
+          </a>
+
+          <!-- ENLACES DEL MENÚ -->
+          <ul class="navbar-nav d-flex align-items-center mb-0">
+            <li class="nav-item">
+              <a class="nav-link {% if request.path == '/' %}active{% endif %}" href="{% url 'Home' %}">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link {% if request.path == '/catalogo/' %}active{% endif %}" href="{% url 'Catalogo' %}">Catálogo</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link {% if request.path == '/promociones/' %}active{% endif %}" href="{% url 'Promociones' %}">Promociones</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link {% if request.path == '/coches/' %}active{% endif %}" href="{% url 'Registros' %}">Top 10</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link {% if request.path == '/contacto/' %}active{% endif %}" href="{% url 'Contacto' %}">Contáctanos</a>
+            </li>
+          </ul>
+
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ======= CONTENIDO PRINCIPAL ======= -->
+  <main class="pt-5 mt-5">
+    {% block contenido %}
+    {% endblock %}
+  </main>
+
+  <!-- ======= FOOTER GLOBAL ======= -->
+  {% block footer %}
+  <footer class="bg-dark text-white text-center py-3 mt-5">
+    <div class="container">
+      <small>&copy; 2025 Muévete — Todos los derechos reservados.</small>
+    </div>
+  </footer>
+  {% endblock %}
+
+  <!-- ======= SCRIPT DE SCROLL ======= -->
+  <script>
+    window.addEventListener("scroll", function() {
+      const body = document.querySelector("body");
+      if (window.scrollY > 50) {
+        body.classList.add("scrolled");
+      } else {
+        body.classList.remove("scrolled");
+      }
+    });
+  </script>
+
+</body>
+</html>

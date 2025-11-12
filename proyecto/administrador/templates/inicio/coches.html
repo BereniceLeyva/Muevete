@@ -1,0 +1,44 @@
+{% extends "inicio/menu.html" %}
+{% load static %}
+
+{% block titulo %}Top 10 | Muévete{% endblock %}
+{% block body_class %}top10{% endblock %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'inicio/css/top10.css' %}">
+{% endblock %}
+
+{% block contenido %}
+<section class="py-5 bg-dark text-light top10-section">
+  <div class="container">
+    <!-- Título centrado -->
+    <h3 class="fw-bold mb-5 text-center">Coches mejor valorados</h3>
+
+    <div class="row justify-content-center g-4">
+      {% for coche in coches %}
+        <div class="col-md-4">
+          <div class="card bg-black text-light border-0 h-100 shadow-lg hover-card">
+            {% if coche.imagen %}
+              <img src="{{ coche.imagen.url }}" class="card-img-top" alt="{{ coche.nombre }}">
+            {% else %}
+              <img src="{% static 'inicio/images/sin_imagen.jpg' %}" class="card-img-top" alt="Sin imagen">
+            {% endif %}
+            <div class="card-body">
+            <div class="d-flex align-items-center justify-content-between mb-2 name-stars">
+              <h5 class="card-title mb-0">{{ coche.nombre }}</h5>
+              <div class="stars">
+                {{ coche.estrellas|safe }}
+              </div>
+            </div>
+            <p class="card-text text-secondary">Costo: {{ coche.costo }} $/día</p>
+            <a href="#" class="btn btn-outline-light mt-3">VER MÁS</a>
+          </div>
+
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}
+

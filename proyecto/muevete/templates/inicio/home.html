@@ -1,0 +1,92 @@
+{% extends "inicio/menu.html" %}
+{% load static %}
+{% block body_class %}inicio{% endblock %}
+{% block titulo %}Inicio | Muévete{% endblock %}
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'inicio/css/home.css' %}">
+{% endblock %}
+{% block contenido %}
+<!-- ======= HERO / CARRUSEL ======= -->
+<section id="hero" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="{% static 'inicio/images/menu2.png' %}" class="d-block w-100" alt="Auto clásico en carretera">
+      <div class="carousel-caption d-none d-md-block">
+        <h2 class="fw-bold text-light bg-dark bg-opacity-50 p-3 rounded">
+          ¡Mega descuentos este mes!
+        </h2>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= SECCIÓN NOSOTROS ======= -->
+<section class="py-5 bg-dark text-light">
+  <div class="container">
+    <div class="row align-items-start">
+      
+      <!-- Columna Izquierda: Nosotros y Ubicación -->
+      <div class="col-md-6 mb-4">
+        <h3 class="fw-bold">Nosotros</h3>
+        <p class="text-justify">
+          Somos una empresa líder en la renta de autos, esto nació de la necesidad de ser transportados 
+          de forma rápida y segura en cualquier parte del mundo, en un coche que tú conduzcas y a precios bajos.
+        </p>
+
+        <h3 class="fw-bold">Ubicación</h3>
+        <p class="text-justify">
+          Avenida Periférico Paseo de la República No. 133<br>
+          Colonia Pascual Ortiz de Ayala<br>
+          Morelia, Michoacán, C.P. 58250<br>
+          <a href="https://goo.gl/maps/" class="text-light text-decoration-underline">Ver en Google Maps</a>
+        </p>
+      </div>
+
+      <!-- Columna Derecha: Misión y Visión -->
+      <div class="col-md-6 mb-4">
+        <h3 class="fw-bold">Misión</h3>
+        <p class="text-justify">
+          Brindar soluciones de movilidad seguras, confiables y accesibles, ofreciendo una flota moderna 
+          y atención personalizada a cada cliente.
+        </p>
+
+        <h3 class="fw-bold">Visión</h3>
+        <p class="text-justify">
+          Ser la empresa líder en renta de autos a nivel nacional, destacando por la innovación, 
+          calidad del servicio y satisfacción total de nuestros clientes.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ======= FOOTER / MAPA ======= -->
+<footer class="bg-light text-dark pt-4">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-md-4 mb-3">
+        <h5>Enlaces rápidos</h5>
+        <ul class="list-unstyled">
+          <li><a href="#" class="text-dark text-decoration-none">Preguntas frecuentes</a></li>
+          <li><a href="#" class="text-dark text-decoration-none">Términos y condiciones</a></li>
+        </ul>
+      </div>
+
+      <div class="col-md-4 text-center mb-3">
+        <h5>Síguenos</h5>
+        <a href="#" class="text-dark me-3"><i class="bi bi-facebook fs-4"></i></a>
+        <a href="#" class="text-dark me-3"><i class="bi bi-twitter fs-4"></i></a>
+        <a href="#" class="text-dark"><i class="bi bi-instagram fs-4"></i></a>
+      </div>
+
+      <div class="col-md-4">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3749.738448285252!2d-101.16073982474094!3d19.694420433765404!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x842d0ba848c62c8f%3A0x7e2f5d3a85e95dd6!2sMorelia%2C%20Mich.!5e0!3m2!1ses-419!2smx!4v1695000000000"
+          width="100%" height="450" style="border:0; border-radius: 10px;" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+</footer>
+{% endblock %}

@@ -1,0 +1,187 @@
+/* ==============================
+   ESTILOS GENERALES
+============================== */
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #fff;
+  color: #212529;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
+}
+
+/* ==============================
+   HERO / PORTADA
+============================== */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: url('../images/menu.png') center center/cover no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 0;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.hero h1 {
+  position: relative;
+  z-index: 2;
+  color: #fff;
+  font-weight: 700;
+  font-size: 3rem;
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.8);
+}
+
+#hero .carousel-item {
+  position: relative;
+}
+
+#hero .carousel-caption {
+  position: absolute;
+  top: 50%;               
+  left: 50%;              
+  transform: translate(-50%, -50%); 
+  text-align: center;
+  width: 100%;
+  z-index: 5;
+}
+
+#hero .carousel-caption h2 {
+  font-size: 2.8rem;      
+  font-weight: 700;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0);
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  display: inline-block;
+}
+
+/* ==============================
+   SECCIÓN NOSOTROS
+============================== */
+section.bg-dark {
+  background-color: #000 !important;
+  padding: 4rem 2rem;
+  text-align: left;
+}
+
+section.bg-dark h2 {
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+section.bg-dark p {
+  color: #ccc;
+  line-height: 1.6;
+  text-align: justify;
+  margin-bottom: 2rem;
+}
+
+section.bg-dark h3 {
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+section.bg-dark .row {
+  margin-top: 2rem;
+}
+
+section.bg-dark .col-md-6 {
+  padding: 0 2rem;
+}
+
+/* ==============================
+   FOOTER
+============================== */
+footer {
+  background-color: #e5e7eb;
+  color: #333;
+  padding: 2rem 0;
+  text-align: left;
+}
+
+footer h5 {
+  color: #000000;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+footer p {
+  color: #333;
+  text-align: justify;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+footer a {
+  color: #252525;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+footer a:hover {
+  color: #000000;
+}
+
+footer .border-top {
+  border-color: rgba(0, 0, 0, 0.1) !important;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  text-align: center;
+  color: #555;
+  font-size: 0.9rem;
+}
+
+footer iframe {
+  width: 100%;
+  height: 450px;
+  border: 0;
+  border-radius: 10px;
+}
+
+/* ==============================
+   RESPONSIVE HOME
+============================== */
+@media (max-width: 992px) {
+  .hero {
+    height: 500px;
+  }
+
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+
+  section.bg-dark .col-md-6 {
+    padding: 0 1rem;
+  }
+
+  section.bg-dark {
+    text-align: center;
+  }
+
+  footer {
+    text-align: center;
+  }
+
+  footer p {
+    text-align: justify;
+    padding: 0 1rem;
+  }
+}
