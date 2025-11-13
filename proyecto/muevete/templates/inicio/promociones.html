@@ -1,0 +1,137 @@
+{% extends "inicio/menu.html" %}
+{% load static %}
+{% block body_class %}inicio{% endblock %}
+{% block titulo %}Promociones | Muévete{% endblock %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'inicio/css/promociones.css' %}">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+{% endblock %}
+
+{% block contenido %}
+<section id="promo-hero" class="position-relative">
+  
+  <div class="hero-caption text-center">
+    <h1 class="display-5 fw-bold">Promociones y descuentos</h1>
+    <p class="lead mb-0">Aprovecha las mejores ofertas: cupones, días gratis y paquetes especiales.</p>
+  </div>
+</section>
+
+<!-- contenido -->
+<section class="promos-section py-5">
+  <div class="container">
+    <div class="row align-items-center mb-4">
+      <div class="col-md-8">
+        <h2 class="fw-bold mb-1">Promociones destacadas</h2>
+        <p class="text-muted mb-0">Ofertas válidas por tiempo limitado. Haz clic en "Ver detalles" para aplicar la promoción.</p>
+      </div>
+      <div class="col-md-4 text-md-end mt-3 mt-md-0">
+        <a href="{% url 'Catalogo' %}" class="btn btn-outline-light rounded-pill px-4">Ver catálogo completo</a>
+      </div>
+    </div>
+
+    <div class="row gy-4">
+      <!-- Card 1 -->
+      <div class="col-lg-4">
+        <article class="promo-card">
+          <div class="promo-media">
+            <img src="{% static 'inicio/images/promo1.jpg' %}" alt="Fin de semana gratis" class="img-fluid rounded-top">
+            <div class="promo-badge">+1 día</div>
+          </div>
+          <div class="promo-body p-3">
+            <h5 class="mb-1">Fin de semana gratis</h5>
+            <p class="small text-muted mb-3">Reserva 3 días y te regalamos el 4º día en modelos seleccionados.</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="fw-semibold">$desde 499 / día</div>
+              <a href="{% url 'detalles_carro' %}" class="btn btn-sm btn-light">Ver detalles</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="col-lg-4">
+        <article class="promo-card">
+          <div class="promo-media">
+            <img src="{% static 'inicio/images/promo2.jpg' %}" alt="Código SUMMER-15" class="img-fluid rounded-top">
+            <div class="promo-badge promo-badge--hot">15% OFF</div>
+          </div>
+          <div class="promo-body p-3">
+            <h5 class="mb-1">Código SUMMER-15</h5>
+            <p class="small text-muted mb-3">Descuento aplicado en autos seleccionados para temporada de verano.</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="fw-semibold">$desde 429 / día</div>
+              <a href="{% url 'detalles_carro' %}" class="btn btn-sm btn-light">Usar código</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="col-lg-4">
+        <article class="promo-card">
+          <div class="promo-media">
+            <img src="{% static 'inicio/images/promo3.jpg' %}" alt="Paquete Familiar" class="img-fluid rounded-top">
+            <div class="promo-badge promo-badge--pack">Pack</div>
+          </div>
+          <div class="promo-body p-3">
+            <h5 class="mb-1">Paquete Familiar</h5>
+            <p class="small text-muted mb-3">Seguro gratuito y segunda silla infantil incluida para viajes largos.</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="fw-semibold">$desde 599 / día</div>
+              <a href="{% url 'detalles_carro' %}" class="btn btn-sm btn-light">Contratar</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <!-- otras ofertas -->
+    <div class="row mt-5 g-3">
+      <div class="col-sm-6 col-lg-3">
+        <div class="small-promo p-3 d-flex align-items-center gap-3">
+          <i class="bi bi-calendar-event fs-3 text-warning"></i>
+          <div>
+            <div class="fw-semibold">Reserva anticipada</div>
+            <div class="small text-muted">Hasta 10% extra</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-lg-3">
+        <div class="small-promo p-3 d-flex align-items-center gap-3">
+          <i class="bi bi-geo-alt-fill fs-3 text-info"></i>
+          <div>
+            <div class="fw-semibold">Recoge en aeropuerto</div>
+            <div class="small text-muted">Sin costo extra</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-lg-3">
+        <div class="small-promo p-3 d-flex align-items-center gap-3">
+          <i class="bi bi-shield-lock-fill fs-3 text-success"></i>
+          <div>
+            <div class="fw-semibold">Cancelación gratis</div>
+            <div class="small text-muted">Hasta 48 hrs</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-lg-3">
+        <div class="small-promo p-3 d-flex align-items-center gap-3">
+          <i class="bi bi-star-fill fs-3 text-warning"></i>
+          <div>
+            <div class="fw-semibold">Mejor valorados</div>
+            <div class="small text-muted">Selección premium</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-5">
+      <a href="{% url 'Catalogo' %}" class="text-muted small">Ver catálogo completo</a>
+    </div>
+  </div>
+</section>
+{% endblock %}
