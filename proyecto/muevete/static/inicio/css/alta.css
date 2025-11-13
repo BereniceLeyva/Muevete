@@ -1,0 +1,198 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.background-image {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+  filter: grayscale(100%);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: -1;
+}
+
+.autos-container {
+  width: 100vw;
+  height: 100vh;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.autos-card {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 50px 40px;
+  border-radius: 10px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  width: 100%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+  backdrop-filter: blur(4px);
+  /* Reduced max-width from 680px to 500px (approximately 5cm less) and increased max-height for longer card */
+}
+
+.autos-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.autos-header h1 {
+  font-size: 32px;
+  color: #fff;
+  font-weight: bold;
+}
+
+.image-upload-section {
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.image-upload-box {
+  width: 100%;
+  max-width: 600px;
+  height: 80px;
+  border: 2px dashed #ccc;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background: #f9f9f9;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.image-upload-box:hover {
+  border-color: #999;
+  background: #f0f0f0;
+}
+
+.upload-icon {
+  width: 40px;
+  height: 40px;
+  color: #666;
+  pointer-events: none;
+}
+
+.file-input {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #fff;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border: none;
+  border-radius: 5px;
+  background: #fff;
+  font-size: 14px;
+  font-family: Arial, sans-serif;
+  transition: box-shadow 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #999;
+}
+
+.form-group textarea {
+  resize: vertical;
+}
+
+.error-messages {
+  color: #c41e3a;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 14px;
+  background: #000;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+  margin-top: 15px;
+}
+
+.submit-btn:hover {
+  background: #333;
+}
+
+@media (max-width: 768px) {
+  .autos-card {
+    margin: 20px;
+    padding: 30px 20px;
+  }
+
+  .autos-header h1 {
+    font-size: 24px;
+  }
+
+  .image-upload-box {
+    height: 60px;
+  }
+
+  .upload-icon {
+    width: 30px;
+    height: 30px;
+  }
+}

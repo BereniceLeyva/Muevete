@@ -1,0 +1,92 @@
+<!--creado por Pablo Montaño Rangel-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alta Autos</title>
+    <link rel="stylesheet" href="{% static 'inicio/css/alta.css' %}">
+</head>
+<body>
+    {% block contenido %}
+    <div class="background-image">
+        <img src="{% static 'inicio/images/alta.jpeg' %}" alt="Fondo de auto" class="background-image">
+    </div>
+    
+    <div class="autos-container">
+        <div class="autos-card">
+            <div class="autos-header">
+                <h1>Alta autos</h1>
+            </div>
+
+            <form method="POST" action="{% url 'Alta_autos' %}" enctype="multipart/form-data">
+                {% csrf_token %}
+
+                <div class="image-upload-section">
+                    <div class="image-upload-box">
+                        <svg class="upload-icon" xmlns="http://www.w3.org/2000/svg" 
+                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                            <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                            <polyline points="21 15 16 10 5 21"></polyline>
+                        </svg>
+                        <input type="file" id="car-image" name="car_image" accept="image/*" class="file-input">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" id="nombre" name="nombre" placeholder="Nombre del auto" required>
+                    {% if form.nombre.errors %}
+                        <div class="error-messages">{{ form.nombre.errors }}</div>
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    <label for="descripcion">Descripción</label>
+                    <textarea id="descripcion" name="descripcion" placeholder="Descripción del auto" rows="3" required></textarea>
+                    {% if form.descripcion.errors %}
+                        <div class="error-messages">{{ form.descripcion.errors }}</div>
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    <label for="alcance">Alcance:</label>
+                    <input type="text" id="alcance" name="alcance" placeholder="Alcance en km" required>
+                    {% if form.alcance.errors %}
+                        <div class="error-messages">{{ form.alcance.errors }}</div>
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    <label for="velocidad">Velocidad:</label>
+                    <input type="text" id="velocidad" name="velocidad" placeholder="Velocidad máxima" required>
+                    {% if form.velocidad.errors %}
+                        <div class="error-messages">{{ form.velocidad.errors }}</div>
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    <label for="costo">Costo:</label>
+                    <input type="number" id="costo" name="costo" placeholder="Costo del auto" step="0.01" required>
+                    {% if form.costo.errors %}
+                        <div class="error-messages">{{ form.costo.errors }}</div>
+                    {% endif %}
+                </div>
+
+                {% if form.non_field_errors %}
+                    <div class="error-messages">
+                        {% for error in form.non_field_errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+                <button type="submit" class="submit-btn">Dar de alta auto</button>
+            </form>
+        </div>
+    </div>
+    {% endblock %}
+</body>
+</html>
