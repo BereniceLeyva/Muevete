@@ -1,0 +1,65 @@
+:root{
+  --card-bg:#111;
+  --muted:#bfc2c6;
+  --accent:#f6c84c;
+}
+
+body {
+  background-color: #111;   
+  color: #fff;              
+}
+
+
+#hero img { width:100%; height:520px; object-fit:cover; display:block; }
+.carousel-caption h2 { font-size: 50px; position: relative ; padding: 1rem 2rem; z-index: 2;}
+
+/* Intro texto */
+.intro-text { color:var(--muted); margin-top:1.5rem; line-height:1.6; }
+
+/* comentarios */
+.comentario {
+  background:#f9f9f9;
+  color:#111;
+  border-left:5px solid #ffc107;
+  padding:12px 14px;
+  border-radius:8px;
+  margin-bottom:12px;
+  font-style:normal;
+}
+
+/* calificaion/derecha */
+.rating-area .stars .bi { color:var(--accent); margin-right:4px; font-size:1.05rem; }
+.rating-area .icon-actions .bi { color:#d0d0d0; font-size:1.05rem; margin-right:6px; }
+.rating-area .emojis { font-size:1.15rem; margin-top:6px; }
+
+
+.booking-card {
+  background:var(--card-bg);
+  border-radius:10px;
+  color:#fff;
+  position:sticky;
+  top:100px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+}
+.booking-input {
+  background:#f3f4f6;
+  border:none;
+  border-radius:20px;
+  padding:10px 12px;
+  color:#111;
+}
+.booking-card .btn-light {
+  background:#e6e7e8;
+  color:#111;
+  border-radius:20px;
+  border:none;
+  padding:10px 12px;
+  font-weight:600;
+}
+
+
+@media (max-width:992px){
+  #hero img{ height:300px; }
+  .booking-card { position: static; margin-top:1.5rem; top:auto; }
+  .rating-area { text-align:left; margin-top:100px; }
+}

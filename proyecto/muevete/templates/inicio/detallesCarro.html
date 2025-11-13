@@ -1,0 +1,98 @@
+{% extends "inicio/menu.html" %}
+{% load static %}
+{% block body_class %}inicio{% endblock %}
+{% block titulo %}Detalles del auto | Muévete{% endblock %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'inicio/css/detallesCarro.css' %}">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+{% endblock %}
+
+{% block contenido %}
+<section id="hero" class="position-relative">
+  <img src="{% static 'inicio/images/mustangg.jpg' %}" class="d-block w-100" alt="Auto clásico en carretera" style="object-fit:cover; height:700px;">
+  <div class="carousel-caption d-none d-md-block">
+    <h2 class="fw-bold text-light bg-dark bg-opacity-50 p-3 rounded margin-top">Auto clásico 1967 Mustang GT</h2>
+  </div>
+</section>
+
+<section class="py-5 bg-dark text-light">
+  <div class="container">
+    <div class="row gx-4">
+
+      <!-- descripción/texto -->
+      <div class="col-md-6 mb-4">
+        <p class="intro-text">
+          Antes de hablar del alcance, te presentamos los detalles más destacados de este modelo icónico.
+        </p>
+
+        <h5 class="fw-bold">Descripción</h5>
+        <p class="text-justify">
+          Un clásico restaurado con cuidado: motor potente, interior en cuero y detalles cromados. Ideal para paseos y sesiones fotográficas.
+        </p>
+
+        <h5 class="fw-bold mt-4">Detalles</h5>
+        <p>Alcance: <strong>450 km por tanque</strong></p>
+        <p>Velocidad máxima: <strong>220 km/h</strong></p>
+        <p>Transmisión: <strong>Manual</strong></p>
+
+        <hr class="border-light">
+
+        <div class="d-flex justify-content-between align-items-start">
+          <div>
+            <h6 class="mb-1">Opiniones</h6>
+            <div class="comentario mb-3">
+              “Un auto que combina potencia, elegancia y nostalgia. Ideal para los amantes de los clásicos.”
+            </div>
+            <div class="comentario mb-3">
+              “Perfecto para sesiones y paseos. Motor con mucha personalidad.”
+            </div>
+          </div>
+
+          <div class="text-end rating-area">
+            <div class="stars mb-1">
+              <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star"></i>
+            </div>
+            <div class="small text-muted">4.0 (1,234 reviews)</div>
+
+            <div class="icon-actions mt-2">
+              <i class="bi bi-share me-2" title="Compartir"></i>
+              <i class="bi bi-heart me-2" title="Favorito"></i>
+              <i class="bi bi-link-45deg" title="Enlace"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- formulario reserva -->
+      <div class="col-md-6 mb-4">
+        <div class="booking-card p-4">
+          <h5 class="fw-bold mb-3">Formulario de reserva</h5>
+
+          <form method="post" novalidate>
+            {% csrf_token %}
+            <div class="mb-3">
+              <label class="form-label small text-light">Fecha de inicio</label>
+              <input type="date" name="start_date" class="form-control booking-input" required>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label small text-light">Fecha de finalización</label>
+              <input type="date" name="end_date" class="form-control booking-input" required>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label small text-light">Código de promoción</label>
+              <input type="text" name="promo_code" class="form-control booking-input" placeholder="SUMMER-15">
+            </div>
+
+            <button type="submit" class="btn btn-light w-100">Reserva ahora</button>
+          </form>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+{% endblock %}

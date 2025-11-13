@@ -1,0 +1,125 @@
+body {
+  background-color: #0d0d0d;
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+}
+
+.promos-section h2 {
+  color: #fff;
+}
+
+.promo-card {
+  background-color: #1a1a1a;
+  border: 1px solid #2a2a2a;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.promo-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+}
+
+.promo-media {
+  position: relative;
+  height: 240px;
+  overflow: hidden;
+}
+
+.promo-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.promo-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background-color: #ffc107;
+  color: #000;
+  font-weight: bold;
+  padding: 6px 10px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+}
+
+.promo-badge--hot {
+  background-color: #e63946;
+  color: #fff;
+}
+
+.promo-badge--pack {
+  background-color: #2a9d8f;
+  color: #fff;
+}
+
+.promo-body {
+  padding: 1rem;
+}
+
+.promo-body h5 {
+  color: #fff;
+}
+
+.promo-body p {
+  color: #bfc2c6;
+}
+
+.btn-light {
+  background-color: #fff;
+  color: #000;
+  border: none;
+}
+
+.btn-light:hover {
+  background-color: #f1f1f1;
+}
+
+.col-lg-4 {
+  display: flex;
+  align-items: stretch;
+}
+.col-lg-4 > article.promo-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 420px;
+}
+
+.promo-media {
+  height: 240px;
+  flex: 0 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.promo-media img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  display: block;
+}
+
+.promo-body {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: transparent;
+  padding: 1rem;
+  gap: .6rem;
+}
+
+.promo-body h5 { color: #ffffff; margin-bottom: .25rem; }
+.promo-body p { color: #bfc2c6; }
+.promo-body .fw-semibold { color: #fff; }
+.promo-body .d-flex { margin-top: .5rem; z-index: 2; }
+
+@media (max-width: 992px) {
+  .col-lg-4 > article.promo-card { min-height: 360px; }
+  .promo-media { height: 160px; }
+}
