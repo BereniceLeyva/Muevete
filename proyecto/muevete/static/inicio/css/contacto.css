@@ -1,0 +1,183 @@
+.contacto-section {
+  background-color: #1e1e1e;
+  min-height: 100vh;
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+.contacto-section h2 {
+  font-size: 3rem;
+  color: #fff;
+  letter-spacing: 1px;
+}
+
+.info-contacto p {
+  font-size: 1.1rem;
+  margin-bottom: 12px;
+  color: #ddd;
+}
+
+.info-contacto i {
+  margin-right: 10px;
+}
+
+.redes .icono-red {
+  display: inline-block;
+  color: #fff;
+  font-size: 1.5rem;
+  margin-right: 15px;
+  transition: color 0.3s ease;
+}
+
+.redes .icono-red:hover {
+  color: #fff;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #1e1e1e;
+}
+
+.navbar,
+.navbar-inverse {
+  margin-bottom: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+  background-color: #000 !important;
+}
+
+.contacto-section {
+  position: relative;
+  min-height: 100vh;
+  padding-top: 80px;
+  padding-bottom: 80px;
+  background-image: url("../images/FondoContacto.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.contacto-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 2;
+}
+
+.contacto-section .container {
+  position: relative;
+  z-index: 3;
+}
+
+.info-contacto i {
+  color: #fff !important;
+  margin-right: 10px;
+}
+
+.info-contacto h4 {
+  color: #fff !important;
+}
+
+/* ---------------------------- */
+/*  FORMULARIO MEJORADO        */
+/* ---------------------------- */
+.form-contacto {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 20px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.4); 
+  padding: 40px;
+  transform: scale(1.05);
+  transition: all 0.3s ease;
+  margin-top: 20px;
+  margin-left: -40px;
+  backdrop-filter: blur(6px); 
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.form-contacto:hover {
+  transform: scale(1.07);
+  background: rgba(255, 255, 255, 0.18);
+}
+
+
+.form-contacto .form-label {
+  color: #fff;
+  font-weight: 500;
+}
+
+
+.form-contacto .form-control {
+  background: rgba(0, 0, 0, 0.3);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  padding: 12px 16px;
+}
+
+.form-contacto .form-control::placeholder {
+  color: #ccc;
+}
+
+.form-contacto .form-control:focus {
+  background: rgba(0, 0, 0, 0.4);
+  outline: none;
+  box-shadow: 0 0 0 2px #00bfff;
+}
+
+/* Botón de envío */
+.btn-enviar {
+  background-color: transparent;
+  color: #fff;
+  font-weight: bold;
+  border: 2px solid #fff;
+  padding: 10px;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+}
+
+.btn-enviar:hover {
+  background-color: #000;
+  color: #fff;
+  border-color: #000;
+  transform: translateY(-2px);
+}
+
+/* En pantallas grandes, mejora la alineación */
+@media (min-width: 992px) {
+  .form-contacto {
+    margin-top: 30px;
+    margin-left: -60px;
+  }
+}
+
+.contacto-section .col-md-6:last-child {
+  transform: translateX(-80px);
+}
+
+/* En pantallas grandes, puedes ajustar un poco menos si se va demasiado */
+@media (min-width: 1200px) {
+  .contacto-section .col-md-6:last-child {
+    transform: translateX(-180px);
+  }
+}
+
+/* En pantallas pequeñas, que se mantenga centrado */
+@media (max-width: 768px) {
+  .contacto-section .col-md-6:last-child {
+    transform: none;
+  }
+
+  .form-contacto {
+    transform: none; /* Evita que se agrande demasiado en móvil */
+    margin-left: 0;
+    padding: 25px;
+  }
+}
+
+
+

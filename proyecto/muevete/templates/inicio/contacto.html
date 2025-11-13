@@ -1,0 +1,59 @@
+{% extends "inicio/menu.html" %}
+{% load static %}
+{% block body_class %}contacto{% endblock %}
+{% block titulo %}Contacto | Muévete{% endblock %}
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'inicio/css/contacto.css' %}">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+{% endblock %}
+
+{% block contenido %}
+<section class="contacto-section py-5 bg-dark text-light">
+  <div class="container">
+
+    <!-- TÍTULO -->
+    <h2 class="text-center fw-bold mb-5">Contáctanos</h2>
+
+    <div class="row g-5 align-items-center">
+
+      <!-- INFORMACIÓN DE CONTACTO -->
+      <div class="col-md-6">
+        <div class="info-contacto">
+          <h4 class="mb-4 text-info fw-bold">Información de contacto</h4>
+          <p><i class="bi bi-geo-alt-fill text-info"></i> Av. Revolución #123, Ciudad de México</p>
+          <p><i class="bi bi-telephone-fill text-info"></i> +52 55 1234 5678</p>
+          <p><i class="bi bi-envelope-fill text-info"></i> contacto@muevete.com</p>
+
+          <div class="redes mt-4">
+            <a href="#" class="icono-red"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="icono-red"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="icono-red"><i class="bi bi-twitter-x"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- FORMULARIO -->
+      <div class="col-md-6">
+        <form class="form-contacto p-4 rounded">
+          <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="nombre" placeholder="Tu nombre completo" required>
+          </div>
+          <div class="mb-3">
+            <label for="correo" class="form-label">Correo electrónico</label>
+            <input type="email" class="form-control" id="correo" placeholder="tu@correo.com" required>
+          </div>
+          <div class="mb-3">
+            <label for="mensaje" class="form-label">Mensaje</label>
+            <textarea class="form-control" id="mensaje" rows="4" placeholder="Escribe tu mensaje..." required></textarea>
+          </div>
+          <button type="submit" class="btn-enviar w-100 mt-3">Enviar Mensaje</button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script src="{% static 'inicio/js/contacto.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,149 @@
+{% extends "inicio/menu.html" %}
+{% load static %}
+{% block body_class %}catalogo{% endblock %}
+{% block titulo %}Catálogo | Muévete{% endblock %}
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'inicio/css/catalogo.css' %}">
+{% endblock %}
+
+{% block contenido %}
+
+<section class="catalogo-section py-5 bg-dark text-light">
+  <div class="container">
+
+    <!-- TÍTULO -->
+    <h2 class="text-center fw-bold mb-5">Catálogo de Coches</h2>
+
+    <!-- FILTROS -->
+    <div class="filtros d-flex justify-content-center align-items-center flex-wrap gap-3 mb-4">
+      <button class="btn-filtro active">Deportivos</button>
+      <button class="btn-filtro">Eléctricos</button>
+      <button class="btn-filtro">Lujo</button>
+      <input type="text" class="input-buscar" placeholder="Buscar coches...">
+    </div>
+
+    <!-- TARJETAS DE COCHES -->
+    <div class="row g-4">
+
+      
+      <div class="col-md-6 col-lg-4">
+        <div class="card-coche">
+          <img src="{% static 'inicio/images/Tesla.jpg' %}" alt="Tesla Modelo S">
+          <div class="overlay"></div>
+          <div class="info">
+            <h5>Tesla Modelo S</h5>
+            <p>Calificación promedio: <strong>4.8</strong></p>
+            <a href="#" class="ver-detalles">VER DETALLES</a>
+          </div>
+        </div>
+      </div>
+
+      
+      <div class="col-md-6 col-lg-4">
+        <div class="card-coche">
+          <img src="{% static 'inicio/images/Ferrari.jpg' %}" alt="Ferrari F8">
+          <div class="overlay"></div>
+          <div class="info">
+            <h5>Ferrari F8</h5>
+            <p>Calificación promedio: <strong>4.7</strong></p>
+            <a href="#" class="ver-detalles">VER DETALLES</a>
+          </div>
+        </div>
+      </div>
+
+      
+      <div class="col-md-6 col-lg-4">
+        <div class="card-coche">
+          <img src="{% static 'inicio/images/Prius.jpg' %}" alt="Toyota Prius">
+          <div class="overlay"></div>
+          <div class="info">
+            <h5>Toyota Prius</h5>
+            <p>Calificación promedio: <strong>4.4</strong></p>
+            <a href="#" class="ver-detalles">VER DETALLES</a>
+          </div>
+        </div>
+      </div>
+
+      
+      <div class="col-md-6 col-lg-4">
+        <div class="card-coche">
+          <img src="{% static 'inicio/images/BMW T4.jpg' %}" alt="BMW T4">
+          <div class="overlay"></div>
+          <div class="info">
+            <h5>BMW T4</h5>
+            <p>Calificación promedio: <strong>4.5</strong></p>
+            <a href="#" class="ver-detalles">VER DETALLES</a>
+          </div>
+        </div>
+      </div>
+
+      
+      <div class="col-md-6 col-lg-4">
+        <div class="card-coche">
+          <img src="{% static 'inicio/images/Jeep.jpg' %}" alt="Jeep Wrangler">
+          <div class="overlay"></div>
+          <div class="info">
+            <h5>Jeep Wrangler</h5>
+            <p>Calificación promedio: <strong>4.6</strong></p>
+            <a href="#" class="ver-detalles">VER DETALLES</a>
+          </div>
+        </div>
+      </div>
+
+      
+      <div class="col-md-6 col-lg-4">
+        <div class="card-coche">
+          <img src="{% static 'inicio/images/BMW 7.jpg' %}" alt="BMW Serie 7">
+          <div class="overlay"></div>
+          <div class="info">
+            <h5>BMW Serie 7</h5>
+            <p>Calificación promedio: <strong>4.5</strong></p>
+            <a href="#" class="ver-detalles">VER DETALLES</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4">
+        <div class="card-coche">
+          <img src="{% static 'inicio/images/Mustang.jpg' %}" alt="Musstang Convertible">
+          <div class="overlay"></div>
+          <div class="info">
+            <h5>Musstang Convertible</h5>
+            <p>Calificación promedio: <strong>5</strong></p>
+            <a href="#" class="ver-detalles">VER DETALLES</a>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-md-6 col-lg-4">
+        <div class="card-coche">
+          <img src="{% static 'inicio/images/Jetta.jpg' %}" alt="Jetta">
+          <div class="overlay"></div>
+          <div class="info">
+            <h5>Jetta</h5>
+            <p>Calificación promedio: <strong>4.2</strong></p>
+            <a href="#" class="ver-detalles">VER DETALLES</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4">
+        <div class="card-coche">
+          <img src="{% static 'inicio/images/Cherooke.jpg' %}" alt="Grand Cherooke">
+          <div class="overlay"></div>
+          <div class="info">
+            <h5>Grand Cherooke</h5>
+            <p>Calificación promedio: <strong>5</strong></p>
+            <a href="#" class="ver-detalles">VER DETALLES</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<script src="{% static 'inicio/js/catalogo.js' %}"></script>
+{% endblock %}

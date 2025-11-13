@@ -1,0 +1,163 @@
+body.catalogo {
+  background-color: #1e1e1e;
+  margin: 0;
+  padding: 0;
+}
+
+.catalogo-section {
+  background-color: #1e1e1e;
+  min-height: 100vh;
+  margin-top: -8px; 
+  padding-top: 3rem; 
+  border-top: none;
+}
+
+
+.catalogo-section h2 {
+  font-size: 2.5rem;
+  color: #fff;
+  letter-spacing: 1px;
+}
+
+/* Filtros */
+.filtros {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  width: 100%;          
+  padding: 0 3rem;       
+  margin: 2rem auto 3rem;
+}
+
+.btn-filtro {
+  background: transparent;
+  border: 2px solid #fff;
+  color: #fff;
+  padding: 10px 28px; 
+  border-radius: 25px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  min-width: 150px; 
+}
+
+.btn-filtro.active,
+.btn-filtro:hover {
+  background: #fff;
+  color: #000;
+}
+
+.input-buscar {
+  padding: 10px 18px;
+  border-radius: 25px;
+  border: none;
+  outline: none;
+  width: 300px; 
+  font-size: 1rem;
+  max-width: 90%;
+}
+
+/* TARJETAS DE COCHES */
+.card-coche {
+  position: relative;
+  border-radius: 15px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.card-coche img {
+  width: 100%;
+  height: 230px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+
+.card-coche .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.55);
+  transition: background 0.3s ease;
+}
+
+
+.card-coche .info {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  z-index: 2;
+  color: #fff;
+}
+
+.card-coche h5 {
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 5px;
+}
+
+.card-coche p {
+  color: #ddd;
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+}
+
+.ver-detalles {
+  display: inline-block;
+  font-size: 0.9rem;
+  color: #00bfff;
+  text-decoration: none;
+  border: 1px solid #00bfff;
+  padding: 5px 12px;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+}
+
+.ver-detalles:hover {
+  background: #00bfff;
+  color: #000;
+}
+
+
+.card-coche:hover img {
+  transform: scale(1.05);
+}
+
+.card-coche:hover .overlay {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.card-coche:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.15);
+}
+
+
+header, body, html {
+  background-color: #1e1e1e !important;
+}
+
+
+.filtros {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 0 3rem; 
+}
+
+.btn-filtro,
+.input-buscar {
+  flex: 1; 
+  max-width: none;
+}
+
+.input-buscar {
+  text-align: left;
+}
