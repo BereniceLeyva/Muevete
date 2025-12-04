@@ -17,21 +17,27 @@
       {% for coche in coches %}
         <div class="col-md-4">
           <div class="card bg-black text-light border-0 h-100 shadow-lg hover-card">
-            {% if coche.imagen %}
-              <img src="{{ coche.imagen.url }}" class="card-img-top" alt="{{ coche.nombre }}">
+
+            {% if coche.imagen_top10 %}
+                <img src="{{ coche.imagen_top10.url }}" alt="{{ coche.nombre }}">
             {% else %}
-              <img src="{% static 'inicio/images/sin_imagen.jpg' %}" class="card-img-top" alt="Sin imagen">
+                <img src="{% static 'inicio/images/sin_imagen.jpg' %}" class="card-img-top" alt="Sin imagen">
             {% endif %}
+
+
             <div class="card-body">
-            <div class="d-flex align-items-center justify-content-between mb-2 name-stars">
-              <h5 class="card-title mb-0">{{ coche.nombre }}</h5>
-              <div class="stars">
-                {{ coche.estrellas|safe }}
+
+              <div class="d-flex align-items-center justify-content-between mb-2 name-stars">
+                <h5 class="card-title mb-0">{{ coche.nombre }}</h5>
+                <div class="stars">
+                  {{ coche.estrellas|safe }}
+                </div>
               </div>
+
+              <p class="card-text text-secondary">Costo: {{ coche.costo }} $/día</p>
+
+              <a href="{% url 'detalles_coche' coche.id %}" class="btn btn-outline-light mt-3">VER MÁS</a>
             </div>
-            <p class="card-text text-secondary">Costo: {{ coche.costo }} $/día</p>
-            <a href="{% url 'detalles_carro' %}" class="btn btn-outline-light mt-3">VER MÁS</a>
-          </div>
 
           </div>
         </div>
@@ -40,4 +46,5 @@
   </div>
 </section>
 {% endblock %}
+
 

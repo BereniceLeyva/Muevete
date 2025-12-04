@@ -1,0 +1,80 @@
+/* === Estilo general === */
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #000;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  min-height: 100vh;
+}
+
+/* === Contenedor principal === */
+.reserva-success-container {
+  max-width: 600px;
+  margin: 120px auto 0 auto; /* espacio para navbar */
+  background-color: #000;
+  padding: 40px 30px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* === Título === */
+.reserva-success-container h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+/* === Texto === */
+.reserva-success-container p {
+  color: #aaa;
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+}
+
+/* === Botón volver === */
+.reserva-success-container .btn-volver {
+  display: inline-block;
+  padding: 12px 25px;
+  border: 1px solid #fff;
+  border-radius: 12px;
+  color: #fff;
+  transition: 0.3s ease;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.reserva-success-container .btn-volver:hover {
+  background-color: #fff;
+  color: #000;
+  font-weight: 600;
+}
+
+/* === Animación suave === */
+.reserva-success-container {
+  animation: fadeIn 1s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* === Responsivo === */
+@media (max-width: 600px) {
+  .reserva-success-container {
+    margin-top: 100px;
+    padding: 30px 20px;
+  }
+
+  .reserva-success-container h2 {
+    font-size: 1.6rem;
+  }
+
+  .reserva-success-container p {
+    font-size: 1rem;
+  }
+}

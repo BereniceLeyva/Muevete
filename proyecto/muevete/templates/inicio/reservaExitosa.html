@@ -1,0 +1,19 @@
+{% extends "inicio/menu.html" %}
+{% load static %}
+
+{% block titulo %}Reserva realizada{% endblock %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'inicio/css/reservaExitosa.css' %}">
+{% endblock %}
+
+{% block contenido %}
+
+<div class="reserva-success-container">
+    <h2>¡Tu reserva fue registrada con éxito!</h2>
+    <p>Gracias por elegir Muévete. Te contactaremos pronto.</p>
+
+    <a href="{% url 'Catalogo' %}" class="btn-volver">Volver al catálogo</a>
+</div>
+
+{% endblock %}

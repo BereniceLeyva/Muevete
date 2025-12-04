@@ -9,97 +9,82 @@
 {% endblock %}
 
 {% block contenido %}
-
 <div class="page-padding">
 
-<section id="hero" class="position-relative">
-  <img src="{% static 'inicio/images/mustangg.jpg' %}" class="hero-img" alt="Auto clásico">
-  <h2 class="car-title">Ford Mustang GT 1967</h2>
+  <!-- HERO -->
+  <section id="hero" class="position-relative">
+  {% if coche.imagen_detalle %}
+    <img src="{{ coche.imagen_detalle.url }}" alt="{{ coche.nombre }}" class="hero-img">
+  {% else %}
+    <img src="{{ coche.imagen_catalogo.url }}" alt="{{ coche.nombre }}" class="hero-img">
+  {% endif %}
+
+  <div class="hero-overlay"></div>
+  <h2 class="car-title">{{ coche.nombre }}</h2>
 </section>
 
-<section class="details-section">
-  <div class="container-fluid px-5">
-    <div class="row gx-5 align-items-start">
 
-      <div class="col-md-7">
+  <!-- DETALLES DEL COCHE -->
+  <section class="details-section">
+    <div class="container-fluid px-5">
+      <div class="row gx-5 align-items-start">
 
-        <p class="intro-text">
-          Experimenta la potencia y elegancia del clásico Mustang GT, restaurado con precisión y lujo.
-        </p>
+        <!-- DESCRIPCIÓN -->
+        <div class="col-md-7">
+          <p class="intro-text">{{ coche.descripcion }}</p>
+          <p><strong>Alcance:</strong> {{ coche.alcance }}</p>
+          <p><strong>Velocidad máxima:</strong> {{ coche.velocidad_maxima }}</p>
+          <p><strong>Costo:</strong> {{ coche.costo }} $/día</p>
 
-        <p><strong>Alcance:</strong> 450 km por tanque</p>
-        <p><strong>Velocidad máxima:</strong> 220 km/h</p>
-        <p><strong>Transmisión:</strong> Manual</p>
-
-
-        <div class="rating-bar d-flex justify-content-between align-items-center">
-
-        <div class="left-empty"></div> 
-
-        <div class="d-flex align-items-center">
-            <div class="stars">
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star-fill"></i>
-                <i class="bi bi-star"></i>
+          <div class="rating-bar d-flex justify-content-between align-items-center mb-3">
+            <div class="left-empty"></div> 
+            <div class="d-flex align-items-center">
+                <div class="stars">{{ coche.estrellas|safe }}</div>
             </div>
-            <span class="review-number ms-2">4.0 (1,234 reviews)</span>
-        </div>
+          </div>
 
-    </div>
+          <hr>
 
-
-        <hr>
-
-        <h5 class="fw-bold">Opiniones y calificaciones</h5>
-
-        <div class="review-box">
-          <p>“Un auto que combina potencia, elegancia y nostalgia. Ideal para los amantes de los clásicos.”</p>
-          <span class="review-author">Alex J.</span>
-          <div class="stars mt-1">
-            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-            <i class="bi bi-star"></i>
+          <h5 class="fw-bold">Opiniones y calificaciones</h5>
+          <div class="review-box">
+            <p>“Un auto que combina potencia, elegancia y nostalgia.”</p>
+            <span class="review-author">Alex J.</span>
+            <div class="stars mt-1">
+              <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+              <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+              <i class="bi bi-star"></i>
+            </div>
           </div>
         </div>
 
-        <div class="review-box">
-          <p>“Perfecto para sesiones y paseos. Motor con mucha personalidad.”</p>
-          <span class="review-author">Jamie L.</span>
-          <div class="stars mt-1">
-            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-            <i class="bi bi-star"></i>
-          </div>
+        <!-- FORMULARIO -->
+    <div class="col-md-5 d-flex justify-content-center">
+      <div class="booking-card mt-4">
+        <h4 class="fw-bold mb-3">Formulario de reserva</h4>
+
+        {% if error %}
+        <div class="alert alert-danger mb-3">
+          {{ error }}
         </div>
+        {% endif %}
 
+        <form method="post">
+          {% csrf_token %}
+          <label class="form-label">Fecha de inicio</label>
+          <input type="date" name="start_date" class="booking-input mb-4" required>
+
+          <label class="form-label">Fecha de finalización</label>
+          <input type="date" name="end_date" class="booking-input mb-4" required>
+
+          <label class="form-label">Código de promoción</label>
+          <input type="text" name="promo_code" class="booking-input mb-4" placeholder="SUMMER-15">
+
+          <button type="submit" class="btn btn-light w-100">Reserva ahora</button>
+        </form>
       </div>
-
-      <div class="col-md-5 d-flex justify-content-center">
-        <div class="booking-card mt-4">
-          <h4 class="fw-bold mb-3">Formulario de reserva</h4>
-
-          <form method="post">
-            {% csrf_token %}
-
-            <label class="form-label">Fecha de inicio</label>
-            <input type="date" name="start_date" class="booking-input mb-4" required>
-
-            <label class="form-label">Fecha de finalización</label>
-            <input type="date" name="end_date" class="booking-input mb-4" required>
-
-            <label class="form-label">Código de promoción</label>
-            <input type="text" name="promo_code" class="booking-input mb-4" placeholder="SUMMER-15">
-
-            <button type="submit" class="btn btn-light w-100">Reserva ahora</button>
-          </form>
-
-        </div>
-      </div>
-
     </div>
-  </div>
-</section>
+      </div>
+    </div>
+  </section>
 </div>
 {% endblock %}
