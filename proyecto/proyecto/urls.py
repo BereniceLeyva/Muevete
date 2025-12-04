@@ -30,6 +30,13 @@ urlpatterns = [
 
     # Páginas de la app 'administrador'
     path('coches/', views_admin.registros, name='Registros'),
+        # Registro de usuarios (lo piden los templates)
+    path('registro/', views.registro, name='Registro'),
+
+    path('detalles/', views.detallesCarro, name='detalles_carro'),
+    path('alta_autos/', views.alta_autos, name='Alta_autos'),
+    path('alta_registros/', views.alta_registros, name='Alta_registros'),
+
 ]
 if settings.DEBUG:
         from django.conf.urls.static import static

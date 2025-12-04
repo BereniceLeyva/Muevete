@@ -4,6 +4,8 @@ body.catalogo {
   padding: 0;
 }
 
+
+
 .catalogo-section {
   background-color: #1e1e1e;
   min-height: 100vh;
@@ -65,6 +67,7 @@ body.catalogo {
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
+  margin-bottom: 25px;
 }
 
 .card-coche img {
@@ -112,15 +115,16 @@ body.catalogo {
   font-size: 0.9rem;
   color: #00bfff;
   text-decoration: none;
-  border: 1px solid #00bfff;
+  border: 1px solid #00bfff00;
   padding: 5px 12px;
   border-radius: 20px;
   transition: all 0.3s ease;
 }
 
 .ver-detalles:hover {
-  background: #00bfff;
+  background: #00bfffb1;
   color: #000;
+  text-decoration: none;
 }
 
 

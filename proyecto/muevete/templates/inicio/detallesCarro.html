@@ -9,82 +9,88 @@
 {% endblock %}
 
 {% block contenido %}
+
+<div class="page-padding">
+
 <section id="hero" class="position-relative">
-  <img src="{% static 'inicio/images/mustangg.jpg' %}" class="d-block w-100" alt="Auto clásico en carretera" style="object-fit:cover; height:700px;">
-  <div class="carousel-caption d-none d-md-block">
-    <h2 class="fw-bold text-light bg-dark bg-opacity-50 p-3 rounded margin-top">Auto clásico 1967 Mustang GT</h2>
-  </div>
+  <img src="{% static 'inicio/images/mustangg.jpg' %}" class="hero-img" alt="Auto clásico">
+  <h2 class="car-title">Ford Mustang GT 1967</h2>
 </section>
 
-<section class="py-5 bg-dark text-light">
-  <div class="container">
-    <div class="row gx-4">
+<section class="details-section">
+  <div class="container-fluid px-5">
+    <div class="row gx-5 align-items-start">
 
-      <!-- descripción/texto -->
-      <div class="col-md-6 mb-4">
+      <div class="col-md-7">
+
         <p class="intro-text">
-          Antes de hablar del alcance, te presentamos los detalles más destacados de este modelo icónico.
+          Experimenta la potencia y elegancia del clásico Mustang GT, restaurado con precisión y lujo.
         </p>
 
-        <h5 class="fw-bold">Descripción</h5>
-        <p class="text-justify">
-          Un clásico restaurado con cuidado: motor potente, interior en cuero y detalles cromados. Ideal para paseos y sesiones fotográficas.
-        </p>
+        <p><strong>Alcance:</strong> 450 km por tanque</p>
+        <p><strong>Velocidad máxima:</strong> 220 km/h</p>
+        <p><strong>Transmisión:</strong> Manual</p>
 
-        <h5 class="fw-bold mt-4">Detalles</h5>
-        <p>Alcance: <strong>450 km por tanque</strong></p>
-        <p>Velocidad máxima: <strong>220 km/h</strong></p>
-        <p>Transmisión: <strong>Manual</strong></p>
 
-        <hr class="border-light">
+        <div class="rating-bar d-flex justify-content-between align-items-center">
 
-        <div class="d-flex justify-content-between align-items-start">
-          <div>
-            <h6 class="mb-1">Opiniones</h6>
-            <div class="comentario mb-3">
-              “Un auto que combina potencia, elegancia y nostalgia. Ideal para los amantes de los clásicos.”
+        <div class="left-empty"></div> 
+
+        <div class="d-flex align-items-center">
+            <div class="stars">
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star-fill"></i>
+                <i class="bi bi-star"></i>
             </div>
-            <div class="comentario mb-3">
-              “Perfecto para sesiones y paseos. Motor con mucha personalidad.”
-            </div>
-          </div>
+            <span class="review-number ms-2">4.0 (1,234 reviews)</span>
+        </div>
 
-          <div class="text-end rating-area">
-            <div class="stars mb-1">
-              <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star"></i>
-            </div>
-            <div class="small text-muted">4.0 (1,234 reviews)</div>
+    </div>
 
-            <div class="icon-actions mt-2">
-              <i class="bi bi-share me-2" title="Compartir"></i>
-              <i class="bi bi-heart me-2" title="Favorito"></i>
-              <i class="bi bi-link-45deg" title="Enlace"></i>
-            </div>
+
+        <hr>
+
+        <h5 class="fw-bold">Opiniones y calificaciones</h5>
+
+        <div class="review-box">
+          <p>“Un auto que combina potencia, elegancia y nostalgia. Ideal para los amantes de los clásicos.”</p>
+          <span class="review-author">Alex J.</span>
+          <div class="stars mt-1">
+            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+            <i class="bi bi-star"></i>
           </div>
         </div>
+
+        <div class="review-box">
+          <p>“Perfecto para sesiones y paseos. Motor con mucha personalidad.”</p>
+          <span class="review-author">Jamie L.</span>
+          <div class="stars mt-1">
+            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+            <i class="bi bi-star"></i>
+          </div>
+        </div>
+
       </div>
 
-      <!-- formulario reserva -->
-      <div class="col-md-6 mb-4">
-        <div class="booking-card p-4">
-          <h5 class="fw-bold mb-3">Formulario de reserva</h5>
+      <div class="col-md-5 d-flex justify-content-center">
+        <div class="booking-card mt-4">
+          <h4 class="fw-bold mb-3">Formulario de reserva</h4>
 
-          <form method="post" novalidate>
+          <form method="post">
             {% csrf_token %}
-            <div class="mb-3">
-              <label class="form-label small text-light">Fecha de inicio</label>
-              <input type="date" name="start_date" class="form-control booking-input" required>
-            </div>
 
-            <div class="mb-3">
-              <label class="form-label small text-light">Fecha de finalización</label>
-              <input type="date" name="end_date" class="form-control booking-input" required>
-            </div>
+            <label class="form-label">Fecha de inicio</label>
+            <input type="date" name="start_date" class="booking-input mb-4" required>
 
-            <div class="mb-3">
-              <label class="form-label small text-light">Código de promoción</label>
-              <input type="text" name="promo_code" class="form-control booking-input" placeholder="SUMMER-15">
-            </div>
+            <label class="form-label">Fecha de finalización</label>
+            <input type="date" name="end_date" class="booking-input mb-4" required>
+
+            <label class="form-label">Código de promoción</label>
+            <input type="text" name="promo_code" class="booking-input mb-4" placeholder="SUMMER-15">
 
             <button type="submit" class="btn btn-light w-100">Reserva ahora</button>
           </form>
@@ -95,4 +101,5 @@
     </div>
   </div>
 </section>
+</div>
 {% endblock %}
