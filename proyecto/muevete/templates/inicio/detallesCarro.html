@@ -46,16 +46,40 @@
           <hr>
 
           <h5 class="fw-bold">Opiniones y calificaciones</h5>
-          <div class="review-box">
-            <p>“Un auto que combina potencia, elegancia y nostalgia.”</p>
-            <span class="review-author">Alex J.</span>
-            <div class="stars mt-1">
-              <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-              <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-              <i class="bi bi-star"></i>
-            </div>
-          </div>
-        </div>
+{% for comentario in coche.comentarios.all %}
+<div class="review-box">
+    <p>“{{ comentario.texto }}”</p>
+    <span class="review-author">{{ comentario.nombre }}</span>
+    <div class="stars mt-1">
+        {% for i in "12345"|slice:":comentario.calificacion"|make_list %}
+            <i class="bi bi-star-fill"></i>
+        {% endfor %}
+        {% for i in "12345"|slice:"comentario.calificacion:"|make_list %}
+            <i class="bi bi-star"></i>
+        {% endfor %}
+    </div>
+</div>
+{% empty %}
+<p>No hay comentarios aún.</p>
+{% endfor %}
+
+<h5 class="mt-4">Agregar un comentario</h5>
+<form method="post">
+  {% csrf_token %}
+  <input type="hidden" name="comentario_submit" value="1">
+  <input type="text" name="nombre" placeholder="Tu nombre" required class="form-control mb-2">
+  <textarea name="texto" placeholder="Tu opinión..." required class="form-control mb-2"></textarea>
+  <label>Calificación:</label>
+  <select name="calificacion" class="form-control mb-2">
+    <option value="1">1 ⭐</option>
+    <option value="2">2 ⭐⭐</option>
+    <option value="3">3 ⭐⭐⭐</option>
+    <option value="4">4 ⭐⭐⭐⭐</option>
+    <option value="5">5 ⭐⭐⭐⭐⭐</option>
+  </select>
+  <button type="submit" class="btn btn-light">Enviar comentario</button>
+</form>
+
 
         <!-- FORMULARIO -->
     <div class="col-md-5 d-flex justify-content-center">

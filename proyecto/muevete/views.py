@@ -1,6 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from administrador.models import Coche, Reserva
 from datetime import datetime
+from administrador.models import Promocion
+from administrador.models import Comentario
 
 def home(request):
     return render(request, 'inicio/home.html')
@@ -11,7 +13,8 @@ def catalogo(request):
     return render(request, "inicio/catalogo.html", {"coches": coches})
 
 def promociones(request):
-    return render(request, 'inicio/promociones.html')
+    promos=Promocion.objects.all()
+    return render(request, 'inicio/promociones.html', {"promos":promos})
 
 
 def coches(request):
@@ -38,9 +41,24 @@ def detalles_coche(request, coche_id):
     error = None  # Para mostrar mensajes en el template
 
     if request.method == "POST":
-        start_date = request.POST.get("start_date")
-        end_date = request.POST.get("end_date")
-        promo_code = request.POST.get("promo_code")
+        if 'Comentario_submit' in request.POST:
+            nombre=request.POST.get('nombre')
+            texto = request.POST.get('texto')
+            calificacion = int(request.POST.get('calificacion', 0))
+            if nombre and texto:
+                Comentario.objects.create(
+                    coche=coche,
+                    nombre=nombre,
+                    texto=texto,
+                    calificacion=calificacion
+                )
+            else:
+                error = "Todos los campos del comentario son obligatorios."
+        else:
+
+            start_date = request.POST.get("start_date")
+            end_date = request.POST.get("end_date")
+            promo_code = request.POST.get("promo_code")
 
         # Convertimos las fechas a objetos datetime.date
         try:

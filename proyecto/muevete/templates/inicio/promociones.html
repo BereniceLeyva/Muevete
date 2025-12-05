@@ -26,66 +26,43 @@
     </div>
 
     <div class="row gy-5">
-      <div class="col-lg-4 col-md-6">
-        <article class="promo-card premium-card">
-          <div class="promo-media">
-            <img src="{% static 'inicio/images/BMW 7.jpg' %}" alt="">
-            <span class="promo-ribbon">+1 DÍA</span>
-          </div>
-
-          <div class="promo-body">
-            <h4 class="promo-title">Fin de semana gratis</h4>
-            <p class="promo-text">Reserva 3 días y te regalamos el 4º día. Disponible en modelos elegidos.</p>
-
-            <div class="promo-footer">
-              <span class="promo-price">Desde $499/día</span>
-              <a href="{% url 'detalles_coche' %}" class="btn btn-light rounded-pill px-3">Ver detalles</a>
+      {% if promos %}
+        {% for promo in promos %}
+        <div class="col-lg-4 col-md-6">
+          <article class="promo-card premium-card">
+            <div class="promo-media">
+              {% if promo.coche.imagen_catalogo %}
+                <img src="{{ promo.coche.imagen_catalogo.url }}" alt="{{ promo.coche.nombre }}">
+              {% else %}
+                <img src="{% static 'inicio/images/default-car.jpg' %}" alt="sin imagen">
+              {% endif %}
+              <span class="promo-ribbon">
+                {% if promo.descuento %}
+                  {{ promo.descuento }}
+                {% else %}
+                  +1 DÍA
+                {% endif %}
+              </span>
             </div>
-          </div>
-        </article>
-      </div>
-
-
-      <div class="col-lg-4 col-md-6">
-        <article class="promo-card premium-card">
-          <div class="promo-media">
-            <img src="{% static 'inicio/images/Ferrari.jpg' %}" alt="">
-            <span class="promo-ribbon promo-ribbon-hot">15% OFF</span>
-          </div>
-
-          <div class="promo-body">
-            <h4 class="promo-title">Código SUMMER-15</h4>
-            <p class="promo-text">Descuento especial por temporada de verano en modelos seleccionados.</p>
-
-            <div class="promo-footer">
-              <span class="promo-price">Desde $429/día</span>
-              <a href="{% url 'detalles_coche' %}" class="btn btn-light rounded-pill px-3">Usar código</a>
+            <div class="promo-body">
+              <h4 class="promo-title">{{ promo.titulo }}</h4>
+              <p class="promo-text">{{ promo.descripcion }}</p>
+              <div class="promo-footer">
+                <span class="promo-price">{{ promo.coche.costo }}/día</span>
+                <a href="{% url 'detalles_coche' promo.coche.id %}" class="btn btn-light rounded-pill px-3">Ver detalles</a>
+              </div>
             </div>
-          </div>
-        </article>
-      </div>
-
-      <div class="col-lg-4 col-md-6">
-        <article class="promo-card premium-card">
-          <div class="promo-media">
-            <img src="{% static 'inicio/images/Cherooke.jpg' %}" alt="">
-            <span class="promo-ribbon promo-ribbon-pack">PACK</span>
-          </div>
-
-          <div class="promo-body">
-            <h4 class="promo-title">Paquete Familiar</h4>
-            <p class="promo-text">Incluye seguro gratuito y silla infantil adicional sin costo.</p>
-
-            <div class="promo-footer">
-              <span class="promo-price">Desde $599/día</span>
-              <a href="{% url 'detalles_coche' %}" class="btn btn-light rounded-pill px-3">Contratar</a>
-            </div>
-          </div>
-        </article>
-      </div>
-
+          </article>
+        </div>
+        {% endfor %}
+      {% else %}
+        <div class="col-12">
+          <p class="text-center">No hay promociones activas en este momento.</p>
+        </div>
+      {% endif %}
     </div>
 
+    <!-- bloques informativo -->
     <div class="row mt-5 g-4 justify-content-center">
       <div class="col-sm-6 col-lg-3">
         <div class="small-promo text-center p-4">
@@ -94,7 +71,6 @@
           <p class="small text-muted">Hasta 10% extra</p>
         </div>
       </div>
-
       <div class="col-sm-6 col-lg-3">
         <div class="small-promo text-center p-4">
           <i class="bi bi-geo-alt-fill fs-2"></i>
@@ -102,7 +78,6 @@
           <p class="small text-muted">Sin costo adicional</p>
         </div>
       </div>
-
       <div class="col-sm-6 col-lg-3">
         <div class="small-promo text-center p-4">
           <i class="bi bi-shield-lock-fill fs-2"></i>
@@ -110,7 +85,6 @@
           <p class="small text-muted">Hasta 48 hrs</p>
         </div>
       </div>
-
       <div class="col-sm-6 col-lg-3">
         <div class="small-promo text-center p-4">
           <i class="bi bi-star-fill fs-2"></i>
@@ -124,3 +98,4 @@
 </section>
 
 {% endblock %}
+
