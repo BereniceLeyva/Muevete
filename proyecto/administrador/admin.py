@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Coche, Reserva
+from .models import Coche, Reserva, Auto
 
 # Personalización del panel para Coche
 from django.contrib import admin
@@ -43,3 +43,9 @@ class ReservaAdmin(admin.ModelAdmin):
     list_filter = ('start_date', 'end_date')
     search_fields = ('coche__nombre', 'promo_code')
     date_hierarchy = 'start_date'
+
+
+@admin.register(Auto)
+class AutoAdmin(admin.ModelAdmin):
+    list_display = ('nombre', 'costo', 'alcance', 'velocidad')
+    search_fields = ('nombre',)

@@ -12,8 +12,10 @@
     
 </head>
 <body>
-    <div class="background-container">
-        <img src="{% static 'inicio/images/login.jpeg' %}" alt="Fondo de auto" class="background-image">
+     <div class="background-container">
+        <img src="{% static 'inicio/images/login.jpeg' %}" 
+             alt="Fondo de auto" 
+             class="background-image">
     </div>
 
     <div class="login-wrapper">
@@ -22,7 +24,10 @@
                 <h1>Registrate</h1>
             </div>
 
-            <form method="POST" action="/login/">
+            <!-- FORMULARIO DE REGISTRO -->
+            <form method="POST" action="/registro/">
+                {% csrf_token %}
+
                 <div class="form-group">
                     <label for="username">Nombre</label>
                     <input 

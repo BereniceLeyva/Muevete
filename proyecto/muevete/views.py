@@ -1,8 +1,17 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from administrador.models import Coche, Reserva
+from administrador.models import Coche, Reserva, Auto
 from datetime import datetime
+
 from administrador.models import Promocion
 from administrador.models import Comentario
+
+from .forms import RegistroForm
+from django.contrib.auth.models import User
+from django.contrib import messages
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login, logout
+import logging
+
 
 def home(request):
     return render(request, 'inicio/home.html')
@@ -33,7 +42,33 @@ def top10(request):
 
 
 def registro(request):
-    return render(request, 'inicio/registro.html')
+    if request.method == "POST":
+        username = request.POST.get("username")
+        email = request.POST.get("email")
+        password = request.POST.get("password")
+
+        if not username or not email or not password:
+            messages.error(request, "Todos los campos son obligatorios.")
+            return redirect("registro")
+
+        if User.objects.filter(username=username).exists():
+            messages.error(request, "Ese usuario ya existe.")
+            return redirect("registro")
+
+        if User.objects.filter(email=email).exists():
+            messages.error(request, "Ese correo ya está registrado.")
+            return redirect("registro")
+
+        User.objects.create_user(
+            username=username,
+            email=email,
+            password=password
+        )
+
+        messages.success(request, "Usuario creado correctamente.")
+        return redirect("login")  # A donde lo quieras mandar
+
+    return render(request, "inicio/registro.html")
 
 
 def detalles_coche(request, coche_id):
@@ -109,3 +144,77 @@ def alta_registros(request):
 
 
 
+
+logger = logging.getLogger(__name__)
+def login_view(request):
+    """
+    Login que permite autenticación por email *o* username.
+    En errores devuelve el template (no un redirect inmediato) para que
+    se vea el mensaje inmediatamente y podamos debuggear.
+    """
+    if request.method == "POST":
+        email_or_username = request.POST.get("email", "").strip()
+        password = request.POST.get("password", "")
+
+        logger.debug("Intento de login para: %s", email_or_username)
+
+        user = None
+
+        # 1) si parece un email, buscamos primer usuario con ese email
+        if "@" in email_or_username:
+            u = User.objects.filter(email__iexact=email_or_username).first()
+            if u:
+                user = authenticate(request, username=u.username, password=password)
+                logger.debug("Autenticando por email -> username=%s result=%s", u.username, bool(user))
+
+        # 2) si no autenticó por email, intentar por username directo
+        if user is None:
+            user = authenticate(request, username=email_or_username, password=password)
+            logger.debug("Autenticando por username=%s result=%s", email_or_username, bool(user))
+
+        if user is not None:
+            login(request, user)
+            messages.success(request, "Has iniciado sesión correctamente.")
+            logger.info("Login OK: %s", user.username)
+            return redirect('inicio')  # cambia por la vista que quieras
+        else:
+            # No redirect inmediato: devolvemos template y mostramos mensaje.
+            messages.error(request, "Usuario o contraseña incorrectos. Revisa tus datos.")
+            logger.warning("Login fallido para: %s", email_or_username)
+            # renderizamos la misma página con status 200 para que veas el mensaje
+            return render(request, "inicio/login.html", status=200)
+
+    # GET
+    return render(request, "inicio/login.html")
+
+
+
+def logout_view(request):
+    logout(request)
+    messages.info(request, "Has cerrado sesión.")
+    return redirect('inicio')
+
+
+
+def alta_autos(request):
+    if request.method == "POST":
+
+        nombre = request.POST.get("nombre")
+        descripcion = request.POST.get("descripcion")
+        alcance = request.POST.get("alcance")
+        velocidad = request.POST.get("velocidad")
+        costo = request.POST.get("costo")
+        imagen = request.FILES.get("car_image")
+
+        Auto.objects.create(
+            nombre=nombre,
+            descripcion=descripcion,
+            alcance=alcance,
+            velocidad=velocidad,
+            costo=costo,
+            imagen=imagen
+        )
+
+        return redirect('Catalogo')  # o donde tú quieras
+
+    return render(request, 'inicio/alta_autos.html')

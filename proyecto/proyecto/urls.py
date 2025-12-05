@@ -26,6 +26,7 @@ urlpatterns = [
     path('promociones/', views.promociones, name='Promociones'),
     path('contacto/', views.contacto, name='Contacto'),
     path('login/', auth_views.LoginView.as_view(template_name='inicio/login.html'), name='login'),
+    path('logout/', views.logout_view, name='logout'),
     path('top10/', views.top10, name='Top10'),
 
     # Páginas de la app 'administrador'
