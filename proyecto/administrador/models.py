@@ -30,6 +30,7 @@ class Reserva(models.Model):
     def __str__(self):
         return f"Reserva de {self.coche.nombre} del {self.start_date} al {self.end_date}"
 
+
 class Promocion(models.Model):
     coche = models.ForeignKey(Coche, on_delete=models.CASCADE)
     titulo = models.CharField(max_length=100)
@@ -52,3 +53,15 @@ class Comentario(models.Model):
 
     def __str__(self):
         return f"{self.nombre} - {self.coche.nombre}"
+
+class Auto(models.Model):
+    nombre = models.CharField(max_length=100)
+    descripcion = models.TextField()
+    alcance = models.CharField(max_length=50)
+    velocidad = models.CharField(max_length=50)
+    costo = models.DecimalField(max_digits=10, decimal_places=2)
+    imagen = models.ImageField(upload_to='autos/')
+
+    def __str__(self):
+        return self.nombre
+
