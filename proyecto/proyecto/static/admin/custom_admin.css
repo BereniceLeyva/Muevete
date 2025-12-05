@@ -1,0 +1,54 @@
+/* ===== Fondo general del admin ===== */
+body, html, #container {
+    background-color: rgba(0, 0, 0, 0.7) !important;  /* negro con transparencia */
+    backdrop-filter: blur(6px);                       /* efecto vidrio */
+    color: white !important;
+}
+
+/* ===== Recuadros (módulos) ===== */
+.module {
+    background: rgba(255, 255, 255, 0.2) !important;  /* blanco con opacidad */
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    padding-bottom: 10px;
+    backdrop-filter: blur(4px);  /* efecto vidrio dentro del cuadro */
+}
+
+/* ===== Título del módulo (barra superior) ===== */
+.module caption {
+    background: rgba(255, 255, 255, 0.3) !important;  /* blanco con más opacidad */
+    color: #000 !important;                           /* texto oscuro */
+    font-weight: bold;
+    padding: 12px;
+    border-radius: 16px 16px 0 0;
+}
+
+/* ===== Tablas dentro del módulo ===== */
+.module table {
+    background: transparent !important;
+    color: white !important;
+}
+
+.module table tr {
+    background: transparent !important;
+}
+
+.module table tr:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* ===== Links en color azul brillante ===== */
+a {
+    color: #46b4e3 !important;
+}
+a:hover {
+    color: #71adf1 !important;
+}
+
+/* ===== Mejor estilo para botones (Agregar, Cambiar, etc.) ===== */
+.button, .addlink, .changelink {
+    background: rgba(255, 255, 255, 0.25) !important;
+    border-radius: 10px !important;
+    padding: 4px 10px;
+    color: black !important;
+}

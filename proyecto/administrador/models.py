@@ -10,6 +10,13 @@ class Coche(models.Model):
     velocidad_maxima = models.CharField(max_length=50)
     costo = models.DecimalField(max_digits=10, decimal_places=2)
     valoracion = models.IntegerField(default=0)
+    CATEGORIAS = [
+        ('DEPORTIVO', 'Deportivo'),
+        ('ELECTRICO', 'Eléctrico'),
+        ('LUJO', 'Lujo'),
+    ]
+    categoria = models.CharField(max_length=20, choices=CATEGORIAS, default='DEPORTIVO')
+    
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 

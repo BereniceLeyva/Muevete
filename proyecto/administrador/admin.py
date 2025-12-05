@@ -7,12 +7,16 @@ from django.utils.html import format_html
 from .models import Coche
 
 class CocheAdmin(admin.ModelAdmin):
+    class Media:
+        css = {
+            'all': ('admin/custom_admin.css',)  # tu CSS personalizado
+        }
     readonly_fields = ('created', 'updated')
     list_display = ('nombre', 'miniatura_catalogo', 'miniatura_top10', 'alcance', 'velocidad_maxima', 'costo', 'valoracion')
     search_fields = ('nombre', 'descripcion')
     list_filter = ('alcance',)
     date_hierarchy = 'created'
-    fields = ('nombre', 'descripcion', 'alcance', 'velocidad_maxima', 'costo', 'valoracion',
+    fields = ('nombre','categoria', 'descripcion', 'alcance', 'velocidad_maxima', 'costo', 'valoracion',
               'imagen_catalogo', 'imagen_top10', 'imagen_detalle', 'created', 'updated')
 
     # Miniatura para la imagen del catálogo
