@@ -1,14 +1,12 @@
-/* HERO */
 .hero-img {
   width: 100%;
-  height: 700px;     /* ⬆️ Antes 450px — ahora muestra más imagen */
+  height: 700px;
   object-fit: cover;
-  object-position: center center; /* ⬅️ Esto hace que NO corte la parte superior */
+  object-position: center center;
   display: block;
 }
 
 
-/* TÍTULO SOBRE LA IMAGEN */
 .car-title {
   position: absolute;
   top: 50px;
@@ -21,7 +19,7 @@
   z-index: 10;
 }
 
-/* SECCIÓN DETALLES */
+
 .details-section {
   background: #000000;
   color: white;
@@ -34,7 +32,7 @@
   font-size: 1.1rem;
 }
 
-/* ⭐ ESTRELLAS */
+
 .stars .bi {
   color: var(--accent);
   font-size: 1.2rem;
@@ -45,7 +43,7 @@
   font-size: 0.95rem;
 }
 
-/* CAJAS DE REVIEWS */
+
 .review-box {
   background: #f9f9f9;
   color: #000;
@@ -60,7 +58,7 @@
   font-size: 0.9rem;
 }
 
-/* FORMULARIO */
+
 .booking-card {
   background: #111;
   padding: 40px;
@@ -90,32 +88,25 @@
 }
 
 
-/* RESPONSIVE */
 @media (max-width: 768px){
-
   .hero-img {
-    width: 100%;
-    height: 350px;   /* más bajita para celular */
-    object-fit: cover; /* 🔥 SE MANTIENE — para que SÍ cubra el ancho */
+    height: 350px;
+    object-fit: cover;
   }
 
   .car-title {
-    position: absolute;
-    top: 30px;     /* 👈 ahora SÍ funciona */
+    top: 30px;
     left: 50%;
     transform: translateX(-50%);
-    color: white;
     font-size: 48px;
-    font-weight: 700;
-    text-shadow: 0px 2px 20px rgba(0,0,0,0.8);
-    z-index: 10;
   }
 
   .booking-card {
     margin-top: 25px;
   }
 }
- /* quita espacio entre menú y hero */
+
+
 #hero {
   margin-top: 0 !important;
   padding-top: 0 !important;
@@ -127,7 +118,89 @@
   border-bottom: none !important;
 }
 
-/* elimina cualquier espacio fantasma */
+
 body {
-  background-color: #000; /* para evitar líneas blancas */
+  background-color: #000;
+}
+
+
+.comment-input,
+.comment-textarea,
+.comment-select {
+    background: rgba(255, 255, 255, 0.25) !important;
+    backdrop-filter: blur(8px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    color: white !important;
+    border-radius: 12px;
+    padding: 12px 14px !important;
+}
+
+
+.comment-input::placeholder,
+.comment-textarea::placeholder {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+
+.comment-textarea {
+    min-height: 120px;
+}
+
+
+.comment-select {
+    height: 55px !important; 
+    font-size: 1rem;
+    margin-bottom: 20px !important; 
+}
+
+.comment-select option {
+    color: black; 
+}
+
+
+.comment-btn {
+    background: rgba(255, 255, 255, 0.25) !important;
+    color: #ffffff !important;
+    border: 2px solid rgba(255, 255, 255, 0.5) !important;
+    backdrop-filter: blur(12px);
+    padding: 10px 18px !important;
+    border-radius: 12px !important;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    margin-top: 10px; 
+}
+
+
+.comment-btn:hover {
+    background: rgba(255, 255, 255, 1) !important;
+    color: #000000 !important;
+    border-color: white !important;
+    transform: scale(1.02);
+}
+
+
+.comment-btn:active {
+    transform: scale(0.98);
+}
+
+
+.boton-reserva {
+    display: block;
+    width: 100% !important;  
+    background: #ffffff !important;
+    color: #000000 !important;
+    border: 2px solid #ffffff !important;
+    border-radius: 12px !important;
+    padding: 12px 18px !important;
+    height: 50px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+
+.boton-reserva:hover {
+    background: transparent !important;
+    color: #ffffff !important;
+    border-color: #ffffff !important;
 }

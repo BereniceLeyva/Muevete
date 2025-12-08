@@ -11,7 +11,7 @@
 {% block contenido %}
 <div class="page-padding">
 
-  <!-- HERO -->
+  
   <section id="hero" class="position-relative">
   {% if coche.imagen_detalle %}
     <img src="{{ coche.imagen_detalle.url }}" alt="{{ coche.nombre }}" class="hero-img">
@@ -23,21 +23,21 @@
   <h2 class="car-title">{{ coche.nombre }}</h2>
 </section>
 
-
-  <!-- DETALLES DEL COCHE -->
+  
   <section class="details-section">
     <div class="container-fluid px-5">
       <div class="row gx-5 align-items-start">
 
-        <!-- DESCRIPCIÓN -->
+       
         <div class="col-md-7">
+
           <p class="intro-text">{{ coche.descripcion }}</p>
           <p><strong>Alcance:</strong> {{ coche.alcance }}</p>
           <p><strong>Velocidad máxima:</strong> {{ coche.velocidad_maxima }}</p>
           <p><strong>Costo:</strong> {{ coche.costo }} $/día</p>
 
           <div class="rating-bar d-flex justify-content-between align-items-center mb-3">
-            <div class="left-empty"></div> 
+            <div class="left-empty"></div>
             <div class="d-flex align-items-center">
                 <div class="stars">{{ coche.estrellas|safe }}</div>
             </div>
@@ -46,69 +46,76 @@
           <hr>
 
           <h5 class="fw-bold">Opiniones y calificaciones</h5>
-{% for comentario in coche.comentarios.all %}
-<div class="review-box">
-    <p>“{{ comentario.texto }}”</p>
-    <span class="review-author">{{ comentario.nombre }}</span>
-    <div class="stars mt-1">
-        {% for i in "12345"|slice:":comentario.calificacion"|make_list %}
-            <i class="bi bi-star-fill"></i>
-        {% endfor %}
-        {% for i in "12345"|slice:"comentario.calificacion:"|make_list %}
-            <i class="bi bi-star"></i>
-        {% endfor %}
-    </div>
-</div>
-{% empty %}
-<p>No hay comentarios aún.</p>
-{% endfor %}
+          {% for comentario in coche.comentarios.all %}
+          <div class="review-box">
+              <p>“{{ comentario.texto }}”</p>
+              <span class="review-author">{{ comentario.nombre }}</span>
+              <div class="stars mt-1">
+                  {% for i in "12345"|slice:":comentario.calificacion"|make_list %}
+                      <i class="bi bi-star-fill"></i>
+                  {% endfor %}
+                  {% for i in "12345"|slice:"comentario.calificacion:"|make_list %}
+                      <i class="bi bi-star"></i>
+                  {% endfor %}
+              </div>
+          </div>
+          {% empty %}
+          <p>No hay comentarios aún.</p>
+          {% endfor %}
 
-<h5 class="mt-4">Agregar un comentario</h5>
-<form method="post">
-  {% csrf_token %}
-  <input type="hidden" name="comentario_submit" value="1">
-  <input type="text" name="nombre" placeholder="Tu nombre" required class="form-control mb-2">
-  <textarea name="texto" placeholder="Tu opinión..." required class="form-control mb-2"></textarea>
-  <label>Calificación:</label>
-  <select name="calificacion" class="form-control mb-2">
-    <option value="1">1 ⭐</option>
-    <option value="2">2 ⭐⭐</option>
-    <option value="3">3 ⭐⭐⭐</option>
-    <option value="4">4 ⭐⭐⭐⭐</option>
-    <option value="5">5 ⭐⭐⭐⭐⭐</option>
-  </select>
-  <button type="submit" class="btn btn-light">Enviar comentario</button>
-</form>
+          <h5 class="mt-4">Agregar un comentario</h5>
+          <form method="post">
+            {% csrf_token %}
+            <input type="hidden" name="comentario_submit" value="1">
 
+            <input type="text" name="nombre" placeholder="Tu nombre" required class="form-control mb-2 comment-input">
+            <textarea name="texto" placeholder="Tu opinión..." required class="form-control mb-2 comment-textarea"></textarea>
 
-        <!-- FORMULARIO -->
-    <div class="col-md-5 d-flex justify-content-center">
-      <div class="booking-card mt-4">
-        <h4 class="fw-bold mb-3">Formulario de reserva</h4>
+            <label>Calificación:</label>
+            <select name="calificacion" class="form-control mb-2 comment-select">
+              <option value="1">1 ⭐</option>
+              <option value="2">2 ⭐⭐</option>
+              <option value="3">3 ⭐⭐⭐</option>
+              <option value="4">4 ⭐⭐⭐⭐</option>
+              <option value="5">5 ⭐⭐⭐⭐⭐</option>
+            </select>
 
-        {% if error %}
-        <div class="alert alert-danger mb-3">
-          {{ error }}
+            <button type="submit" class="btn comment-btn">Enviar comentario</button>
+          </form>
+
         </div>
-        {% endif %}
 
-        <form method="post">
-          {% csrf_token %}
-          <label class="form-label">Fecha de inicio</label>
-          <input type="date" name="start_date" class="booking-input mb-4" required>
+        
+        <div class="col-md-5 d-flex justify-content-center">
+          <div class="booking-card mt-4">
+            <h4 class="fw-bold mb-3">Formulario de reserva</h4>
 
-          <label class="form-label">Fecha de finalización</label>
-          <input type="date" name="end_date" class="booking-input mb-4" required>
+            {% if error %}
+            <div class="alert alert-danger mb-3">
+              {{ error }}
+            </div>
+            {% endif %}
 
-          <label class="form-label">Código de promoción</label>
-          <input type="text" name="promo_code" class="booking-input mb-4" placeholder="SUMMER-15">
+            <form method="post">
+              {% csrf_token %}
 
-          <button type="submit" class="btn btn-light w-100">Reserva ahora</button>
-        </form>
-      </div>
-    </div>
+              <label class="form-label">Fecha de inicio</label>
+              <input type="date" name="start_date" class="booking-input mb-4" required>
+
+              <label class="form-label">Fecha de finalización</label>
+              <input type="date" name="end_date" class="booking-input mb-4" required>
+
+              <label class="form-label">Código de promoción</label>
+              <input type="text" name="promo_code" class="booking-input mb-4" placeholder="SUMMER-15">
+
+              <button type="submit" class="boton-reserva">Reserva ahora</button>
+            </form>
+          </div>
+        </div> 
+
       </div>
     </div>
   </section>
+
 </div>
 {% endblock %}
