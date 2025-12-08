@@ -4,14 +4,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const tarjetas = document.querySelectorAll("[data-categoria]");
     const buscador = document.querySelector(".input-buscar");
 
-    let categoriaActiva = "DEPORTIVO"; // por defecto
+    let categoriaActiva = "DEPORTIVO"; 
 
-    // 🔥 Evento de botones (filtrar por categoría)
+    
     botones.forEach(boton => {
         boton.addEventListener("click", () => {
             categoriaActiva = boton.getAttribute("data-filtro");
 
-            // Activar botón visualmente
+            
             botones.forEach(b => b.classList.remove("active"));
             boton.classList.add("active");
 
@@ -19,12 +19,12 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // 🔍 Evento de búsqueda
+  
     buscador.addEventListener("input", () => {
         aplicarFiltros();
     });
 
-    // 🧠 === FUNCIÓN QUE FILTRA POR AMBAS COSAS ===
+    
     function aplicarFiltros() {
         const texto = buscador.value.toLowerCase();
 
