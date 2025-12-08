@@ -73,8 +73,8 @@ def detalles_coche(request, coche_id):
     error = None  # Para mostrar mensajes en el template
 
     if request.method == "POST":
-        if 'Comentario_submit' in request.POST:
-            nombre=request.POST.get('nombre')
+        if 'comentario_submit' in request.POST:  # <-- corregido
+            nombre = request.POST.get('nombre')
             texto = request.POST.get('texto')
             calificacion = int(request.POST.get('calificacion', 0))
             if nombre and texto:
@@ -84,43 +84,45 @@ def detalles_coche(request, coche_id):
                     texto=texto,
                     calificacion=calificacion
                 )
+                return redirect('detalles_coche', coche_id=coche.id)
             else:
                 error = "Todos los campos del comentario son obligatorios."
-        else:
 
+        else:
+            # Formulario de reserva
             start_date = request.POST.get("start_date")
             end_date = request.POST.get("end_date")
             promo_code = request.POST.get("promo_code")
 
-        # Convertimos las fechas a objetos datetime.date
-        try:
-            start_date_obj = datetime.strptime(start_date, "%Y-%m-%d").date()
-            end_date_obj = datetime.strptime(end_date, "%Y-%m-%d").date()
-
-            if start_date_obj > end_date_obj:
-                error = "La fecha de inicio no puede ser mayor a la de finalización."
+            if not start_date or not end_date:
+                error = "Debes seleccionar ambas fechas."
             else:
-                # Revisa si ya hay reservas que se solapen
-                reservas_existentes = Reserva.objects.filter(
-                    coche=coche,
-                    start_date__lte=end_date_obj,
-                    end_date__gte=start_date_obj
-                )
+                try:
+                    start_date_obj = datetime.strptime(start_date, "%Y-%m-%d").date()
+                    end_date_obj = datetime.strptime(end_date, "%Y-%m-%d").date()
 
-                if reservas_existentes.exists():
-                    error = "Este coche ya está reservado en las fechas seleccionadas."
-                else:
-                    # Crear la reserva si no hay conflicto
-                    Reserva.objects.create(
-                        coche=coche,
-                        start_date=start_date_obj,
-                        end_date=end_date_obj,
-                        promo_code=promo_code
-                    )
-                    return redirect('reserva_exitosa')
+                    if start_date_obj > end_date_obj:
+                        error = "La fecha de inicio no puede ser mayor a la de finalización."
+                    else:
+                        reservas_existentes = Reserva.objects.filter(
+                            coche=coche,
+                            start_date__lte=end_date_obj,
+                            end_date__gte=start_date_obj
+                        )
 
-        except ValueError:
-            error = "Formato de fecha inválido."
+                        if reservas_existentes.exists():
+                            error = "Este coche ya está reservado en las fechas seleccionadas."
+                        else:
+                            Reserva.objects.create(
+                                coche=coche,
+                                start_date=start_date_obj,
+                                end_date=end_date_obj,
+                                promo_code=promo_code
+                            )
+                            return redirect('reserva_exitosa')
+
+                except ValueError:
+                    error = "Formato de fecha inválido."
 
     return render(request, "inicio/detallesCarro.html", {
         "coche": coche,
