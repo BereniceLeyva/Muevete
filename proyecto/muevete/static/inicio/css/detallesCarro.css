@@ -186,13 +186,13 @@ body {
 
 .boton-reserva {
     display: block;
-    width: 100% !important;
+    width: 100% !important;  
     background: #ffffff !important;
     color: #000000 !important;
     border: 2px solid #ffffff !important;
     border-radius: 12px !important;
-    padding: 12px 14px !important; /* IGUAL QUE booking-input */
-    height: 46px !important;       /* IGUAL QUE booking-input */
+    padding: 12px 18px !important;
+    height: 50px;
     font-weight: 600;
     transition: all 0.3s ease;
     margin-top: 10px;
