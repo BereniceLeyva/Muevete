@@ -185,3 +185,33 @@ footer iframe {
     padding: 0 1rem;
   }
 }
+.faq-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+.faq-item {
+    margin-bottom: 10px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #ccc;
+}
+
+.faq-question {
+    width: 100%;
+    background: #0051DF;
+    color: white;
+    text-align: left;
+    padding: 15px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.faq-answer {
+    display: none;
+    padding: 15px;
+    background: #f9f9f9;
+    font-size: 14px;
+}

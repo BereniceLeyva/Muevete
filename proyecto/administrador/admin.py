@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Coche, Reserva, Auto, Promocion, Comentario
+from .models import Coche, Reserva, Auto, Promocion, Comentario, MensajeContacto
 
 # Personalización del panel para Coche
 from django.contrib import admin
@@ -64,3 +64,9 @@ class ComentarioAdmin(admin.ModelAdmin):
     list_display = ('nombre', 'coche', 'calificacion', 'fecha')
     search_fields = ('nombre', 'coche__nombre', 'texto')
     list_filter = ('calificacion', 'fecha')
+
+@admin.register(MensajeContacto)
+class MensajeContactoAdmin(admin.ModelAdmin):
+    list_display = ('nombre', 'correo', 'fecha')
+    search_fields = ('nombre', 'correo')
+    list_filter = ('fecha',)

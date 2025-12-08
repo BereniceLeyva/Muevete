@@ -3,8 +3,9 @@ from administrador.models import Coche, Reserva, Auto
 from datetime import datetime
 
 from administrador.models import Promocion
-from administrador.models import Comentario
-
+from administrador.models import Comentario, MensajeContacto
+from django.core.mail import send_mail
+from django.conf import settings
 from .forms import RegistroForm
 from django.contrib.auth.models import User
 from django.contrib import messages
@@ -28,10 +29,6 @@ def promociones(request):
 
 def coches(request):
     return render(request, 'inicio/coches.html')
-
-
-def contacto(request):
-    return render(request, 'inicio/contacto.html')
 
 
 def top10(request):
@@ -218,3 +215,30 @@ def alta_autos(request):
         return redirect('Catalogo')  # o donde tú quieras
 
     return render(request, 'inicio/alta_autos.html')
+
+def contacto(request):
+    if request.method == "POST":
+        nombre = request.POST.get("nombre")
+        correo = request.POST.get("correo")
+        mensaje = request.POST.get("mensaje")
+
+        # Guardar en BD
+        MensajeContacto.objects.create(
+            nombre=nombre,
+            correo=correo,
+            mensaje=mensaje
+        )
+
+        # Enviar correo
+        send_mail(
+            subject="Nuevo mensaje desde la página Muévete",
+            message=f"Nombre: {nombre}\nCorreo: {correo}\n\nMensaje:\n{mensaje}",
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            recipient_list=["mueveterecervas@gmail.com"],
+        )
+
+        return render(request, "inicio/contacto.html", {
+            "exito": True
+        })
+
+    return render(request, "inicio/contacto.html")

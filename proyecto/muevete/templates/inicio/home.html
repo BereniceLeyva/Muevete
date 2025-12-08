@@ -2,11 +2,14 @@
 {% load static %}
 {% block body_class %}inicio{% endblock %}
 {% block titulo %}Inicio | Muévete{% endblock %}
+
 {% block extra_head %}
 <link rel="stylesheet" href="{% static 'inicio/css/home.css' %}">
 {% endblock %}
+
 {% block contenido %}
 
+<!-- ===== HERO ===== -->
 <section id="hero" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
@@ -20,9 +23,12 @@
   </div>
 </section>
 
+<!-- ===== CONTENIDO PRINCIPAL ===== -->
 <section class="py-5 bg-dark text-light">
   <div class="container">
     <div class="row align-items-start">
+
+      <!-- NOSOTROS -->
       <div class="col-md-6 mb-4">
         <h3 class="fw-bold">Nosotros</h3>
         <p class="text-justify">
@@ -35,10 +41,15 @@
           Avenida Periférico Paseo de la República No. 133<br>
           Colonia Pascual Ortiz de Ayala<br>
           Morelia, Michoacán, C.P. 58250<br>
-          <a href="https://goo.gl/maps/" class="text-light text-decoration-underline">Ver en Google Maps</a>
+
+          <a href="https://www.google.com/maps?q=Avenida+Periférico+Paseo+de+la+República+133,+Morelia,+Michoacán" 
+             class="text-light text-decoration-underline" target="_blank">
+             Ver en Google Maps
+          </a>
         </p>
       </div>
 
+      <!-- MISIÓN / VISIÓN -->
       <div class="col-md-6 mb-4">
         <h3 class="fw-bold">Misión</h3>
         <p class="text-justify">
@@ -57,32 +68,101 @@
   </div>
 </section>
 
-
-<!-- ======= FOOTER / MAPA ======= -->
+<!-- ===== FOOTER ===== -->
 <footer class="bg-light text-dark pt-4">
   <div class="container">
     <div class="row align-items-center">
+
+      <!-- ENLACES RÁPIDOS -->
       <div class="col-md-4 mb-3">
         <h5>Enlaces rápidos</h5>
         <ul class="list-unstyled">
-          <li><a href="#" class="text-dark text-decoration-none">Preguntas frecuentes</a></li>
-          <li><a href="#" class="text-dark text-decoration-none">Términos y condiciones</a></li>
+          <li>
+            <a href="#" class="text-dark text-decoration-none" data-bs-toggle="collapse" data-bs-target="#faqCollapse">
+              Preguntas frecuentes
+            </a>
+          </li>
+          <li>
+            <a href="#" class="text-dark text-decoration-none" data-bs-toggle="collapse" data-bs-target="#terminosCollapse">
+              Términos y condiciones
+            </a>
+          </li>
         </ul>
+
+        <!-- ===== FAQ ===== -->
+        <div class="collapse" id="faqCollapse">
+          <div class="card card-body mt-2">
+            <h5>Preguntas frecuentes</h5>
+
+            <div class="faq-container">
+
+              <div class="faq-item">
+                  <p><strong>¿Cómo puedo reservar un viaje?</strong></p>
+                  <div class="faq-answer">
+                      <p>Puedes realizar tu reserva desde la sección “Reservar”. Solo completa tu información y recibirás confirmación por correo.</p>
+                  </div>
+              </div>
+
+              <div class="faq-item">
+                  <p><strong>¿Qué métodos de pago aceptan?</strong></p>
+                  <div class="faq-answer">
+                      <p>Aceptamos tarjetas de crédito, débito y pagos en efectivo en puntos autorizados.</p>
+                  </div>
+              </div>
+
+              <div class="faq-item">
+                  <p><strong>¿Puedo cancelar mi reserva?</strong></p>
+                  <div class="faq-answer">
+                      <p>Sí, puedes cancelar tu reserva hasta 24 horas antes del viaje sin costo adicional.</p>
+                  </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- ===== TÉRMINOS ===== -->
+        <div class="collapse" id="terminosCollapse">
+          <div class="card card-body mt-2">
+            <h5>Términos y condiciones</h5>
+            <p><strong>Uso del sitio:</strong> Al utilizar esta plataforma aceptas nuestras políticas de reserva y privacidad.</p>
+            <p><strong>Reservaciones:</strong> Todas las reservas dependen de disponibilidad y requieren datos reales y actualizados.</p>
+            <p><strong>Cancelaciones:</strong> Pueden realizarse con al menos 24 horas de anticipación.</p>
+            <p><strong>Renta de vehículos:</strong> Es necesario presentar identificación oficial, licencia de conducir vigente y método de pago válido.</p>
+            <p><strong>Responsabilidad del cliente:</strong> El usuario es responsable de multas, daños al vehículo o pérdida de llaves.</p>
+            <p><strong>Privacidad:</strong> La información proporcionada se usa únicamente para fines operativos.</p>
+          </div>
+        </div>
       </div>
 
+      <!-- REDES SOCIALES -->
       <div class="col-md-4 text-center mb-3">
         <h5>Síguenos</h5>
-        <a href="#" class="text-dark me-3"><i class="bi bi-facebook fs-4"></i></a>
-        <a href="#" class="text-dark me-3"><i class="bi bi-twitter fs-4"></i></a>
-        <a href="#" class="text-dark"><i class="bi bi-instagram fs-4"></i></a>
+
+        <a href="https://www.facebook.com" class="text-dark me-3" target="_blank">
+          <i class="bi bi-facebook fs-4"></i>
+        </a>
+
+        <a href="https://twitter.com" class="text-dark me-3" target="_blank">
+          <i class="bi bi-twitter fs-4"></i>
+        </a>
+
+        <a href="https://www.instagram.com" class="text-dark" target="_blank">
+          <i class="bi bi-instagram fs-4"></i>
+        </a>
       </div>
 
+      <!-- MAPA -->
       <div class="col-md-4">
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3749.738448285252!2d-101.16073982474094!3d19.694420433765404!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x842d0ba848c62c8f%3A0x7e2f5d3a85e95dd6!2sMorelia%2C%20Mich.!5e0!3m2!1ses-419!2smx!4v1695000000000"
-          width="100%" height="450" style="border:0; border-radius: 10px;" allowfullscreen loading="lazy"></iframe>
+          width="100%" height="450" style="border:0; border-radius: 10px;" allowfullscreen loading="lazy">
+        </iframe>
       </div>
+
     </div>
   </div>
 </footer>
+
 {% endblock %}
+
