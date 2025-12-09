@@ -74,6 +74,7 @@ def detalles_coche(request, coche_id):
 
     if request.method == "POST":
         if 'comentario_submit' in request.POST:
+            # Procesar comentarios
             nombre = request.POST.get('nombre')
             texto = request.POST.get('texto')
             calificacion = int(request.POST.get('calificacion', 0))
@@ -93,9 +94,12 @@ def detalles_coche(request, coche_id):
             start_date = request.POST.get("start_date")
             end_date = request.POST.get("end_date")
             promo_code = request.POST.get("promo_code")
+            user_email = request.user.email if request.user.is_authenticated else request.POST.get("email")
 
             if not start_date or not end_date:
                 error = "Debes seleccionar ambas fechas."
+            elif not user_email:
+                error = "Debes proporcionar un correo electrónico para la confirmación."
             else:
                 try:
                     start_date_obj = datetime.strptime(start_date, "%Y-%m-%d").date()
@@ -113,12 +117,32 @@ def detalles_coche(request, coche_id):
                         if reservas_existentes.exists():
                             error = "Este coche ya está reservado en las fechas seleccionadas."
                         else:
-                            Reserva.objects.create(
+                            # Crear reserva
+                            reserva = Reserva.objects.create(
                                 coche=coche,
                                 start_date=start_date_obj,
                                 end_date=end_date_obj,
                                 promo_code=promo_code
                             )
+
+                            # Enviar correo de confirmación
+                            try:
+                                send_mail(
+                                    subject='Confirmación de tu reserva',
+                                    message=f'Hola {request.user.username if request.user.is_authenticated else "usuario"},\n\n'
+                                            f'Tu reserva para el coche "{coche.nombre}" ha sido confirmada.\n'
+                                            f'Fecha de inicio: {start_date}\n'
+                                            f'Fecha de finalización: {end_date}\n'
+                                            f'Código de promoción: {promo_code or "N/A"}\n\n'
+                                            f'¡Gracias por confiar en nosotros!',
+                                    from_email=settings.DEFAULT_FROM_EMAIL,
+                                    recipient_list=[user_email],
+                                    fail_silently=False,
+                                )
+                            except Exception as e:
+                                # No interrumpe la reserva si falla el envío
+                                print(f"Error al enviar correo: {e}")
+
                             return redirect('reserva_exitosa')
 
                 except ValueError:
@@ -128,6 +152,7 @@ def detalles_coche(request, coche_id):
         "coche": coche,
         "error": error
     })
+
 
 def reserva_exitosa(request):
     return render(request, "inicio/reservaExitosa.html")

@@ -110,6 +110,11 @@
               <label class="form-label">Código de promoción</label>
               <input type="text" name="promo_code" class="booking-input mb-4" placeholder="SUMMER-15">
 
+              {% if not request.user.is_authenticated %}
+              <label class="form-label">Correo electrónico</label>
+              <input type="email" name="email" class="booking-input mb-4" placeholder="tuemail@ejemplo.com" required>
+              {% endif %}
+
               <button type="submit" class="boton-reserva">Reserva ahora</button>
             </form>
           </div>
