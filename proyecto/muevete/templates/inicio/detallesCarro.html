@@ -11,24 +11,23 @@
 {% block contenido %}
 <div class="page-padding">
 
-  
+  <!-- HERO -->
   <section id="hero" class="position-relative">
-  {% if coche.imagen_detalle %}
-    <img src="{{ coche.imagen_detalle.url }}" alt="{{ coche.nombre }}" class="hero-img">
-  {% else %}
-    <img src="{{ coche.imagen_catalogo.url }}" alt="{{ coche.nombre }}" class="hero-img">
-  {% endif %}
+    {% if coche.imagen_detalle %}
+      <img src="{{ coche.imagen_detalle.url }}" alt="{{ coche.nombre }}" class="hero-img">
+    {% else %}
+      <img src="{{ coche.imagen_catalogo.url }}" alt="{{ coche.nombre }}" class="hero-img">
+    {% endif %}
+    <div class="hero-overlay"></div>
+    <h2 class="car-title">{{ coche.nombre }}</h2>
+  </section>
 
-  <div class="hero-overlay"></div>
-  <h2 class="car-title">{{ coche.nombre }}</h2>
-</section>
-
-  
+  <!-- DETALLES -->
   <section class="details-section">
     <div class="container-fluid px-5">
       <div class="row gx-5 align-items-start">
 
-       
+        <!-- INFORMACIÓN DEL COCHE -->
         <div class="col-md-7">
 
           <p class="intro-text">{{ coche.descripcion }}</p>
@@ -39,30 +38,33 @@
           <div class="rating-bar d-flex justify-content-between align-items-center mb-3">
             <div class="left-empty"></div>
             <div class="d-flex align-items-center">
-                <div class="stars">{{ coche.estrellas|safe }}</div>
+              <div class="stars">{{ coche.estrellas|safe }}</div>
             </div>
           </div>
 
           <hr>
 
+          <!-- COMENTARIOS -->
           <h5 class="fw-bold">Opiniones y calificaciones</h5>
           {% for comentario in coche.comentarios.all %}
-          <div class="review-box">
+            <div class="review-box">
               <p>“{{ comentario.texto }}”</p>
               <span class="review-author">{{ comentario.nombre }}</span>
               <div class="stars mt-1">
-                  {% for i in "12345"|slice:":comentario.calificacion"|make_list %}
-                      <i class="bi bi-star-fill"></i>
-                  {% endfor %}
-                  {% for i in "12345"|slice:"comentario.calificacion:"|make_list %}
-                      <i class="bi bi-star"></i>
-                  {% endfor %}
+                {% for i in "12345"|make_list %}
+                  {% if forloop.counter <= comentario.calificacion %}
+                    <i class="bi bi-star-fill"></i>
+                  {% else %}
+                    <i class="bi bi-star"></i>
+                  {% endif %}
+                {% endfor %}
               </div>
-          </div>
+            </div>
           {% empty %}
-          <p>No hay comentarios aún.</p>
+            <p>No hay comentarios aún.</p>
           {% endfor %}
 
+          <!-- FORMULARIO DE COMENTARIO -->
           <h5 class="mt-4">Agregar un comentario</h5>
           <form method="post">
             {% csrf_token %}
@@ -85,15 +87,15 @@
 
         </div>
 
-        
+        <!-- FORMULARIO DE RESERVA -->
         <div class="col-md-5 d-flex justify-content-center">
           <div class="booking-card mt-4">
             <h4 class="fw-bold mb-3">Formulario de reserva</h4>
 
             {% if error %}
-            <div class="alert alert-danger mb-3">
-              {{ error }}
-            </div>
+              <div class="alert alert-danger mb-3">
+                {{ error }}
+              </div>
             {% endif %}
 
             <form method="post">
@@ -111,7 +113,7 @@
               <button type="submit" class="boton-reserva">Reserva ahora</button>
             </form>
           </div>
-        </div> 
+        </div>
 
       </div>
     </div>

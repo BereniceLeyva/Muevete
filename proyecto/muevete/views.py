@@ -73,7 +73,7 @@ def detalles_coche(request, coche_id):
     error = None  # Para mostrar mensajes en el template
 
     if request.method == "POST":
-        if 'comentario_submit' in request.POST:  # <-- corregido
+        if 'comentario_submit' in request.POST:
             nombre = request.POST.get('nombre')
             texto = request.POST.get('texto')
             calificacion = int(request.POST.get('calificacion', 0))
