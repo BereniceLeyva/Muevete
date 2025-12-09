@@ -8,7 +8,6 @@
 
   {% load static %}
 
-
   <link href="{% static 'inicio/css/bootstrap.min.css' %}" rel="stylesheet">
   <link href="{% static 'inicio/css/menu.css' %}" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
@@ -22,30 +21,45 @@
   <nav class="navbar navbar-expand-lg navbar-dark fixed-top shadow-sm">
     <div class="container">
       <a class="navbar-brand fw-bold" href="{% url 'Home' %}">MUÉVETE</a>
+      
+
       <div class="collapse navbar-collapse" id="navbarNav">
-        <div class="ms-auto d-flex align-items-center gap-3">
-          <a href="{% url 'login' %}" class="btn btn-outline-light rounded-pill px-3">
-            Iniciar sesión
-          </a>
+        <!-- Menú principal a la izquierda -->
+        <ul class="navbar-nav me-auto mb-0">
+          <li class="nav-item">
+            <a class="nav-link {% if request.path == '/' %}active{% endif %}" href="{% url 'Home' %}">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if request.path == '/catalogo/' %}active{% endif %}" href="{% url 'Catalogo' %}">Catálogo</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if request.path == '/promociones/' %}active{% endif %}" href="{% url 'Promociones' %}">Promociones</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if request.path == '/coches/' %}active{% endif %}" href="{% url 'Registros' %}">Top 10</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if request.path == '/contacto/' %}active{% endif %}" href="{% url 'Contacto' %}">Contáctanos</a>
+          </li>
+        </ul>
 
-          <ul class="navbar-nav d-flex align-items-center mb-0">
-            <li class="nav-item">
-              <a class="nav-link {% if request.path == '/' %}active{% endif %}" href="{% url 'Home' %}">Inicio</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link {% if request.path == '/catalogo/' %}active{% endif %}" href="{% url 'Catalogo' %}">Catálogo</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link {% if request.path == '/promociones/' %}active{% endif %}" href="{% url 'Promociones' %}">Promociones</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link {% if request.path == '/coches/' %}active{% endif %}" href="{% url 'Registros' %}">Top 10</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link {% if request.path == '/contacto/' %}active{% endif %}" href="{% url 'Contacto' %}">Contáctanos</a>
-            </li>
-          </ul>
-
+       <!-- Usuario a la derecha -->
+          <div class="ms-auto d-flex align-items-center gap-3">
+            {% if request.user.is_authenticated %}
+            <!-- Separador blanco y grueso -->
+              <span style="color: white; font-weight: 700; font-size: 2rem; margin: 0 235px;"></span>
+              <span class="text-white fw-bold" style="color: white; font-weight: 700;">
+                {{ request.user.first_name|default:request.user.username }}
+              </span>
+              <a href="{% url 'logout' %}" class="btn btn-outline-light rounded-pill px-3">
+                Cerrar sesión
+              </a>
+            {% else %}
+              <a href="{% url 'login' %}" class="btn btn-outline-light rounded-pill px-3">
+                Iniciar sesión
+              </a>
+            {% endif %}
+          </div>
         </div>
       </div>
     </div>
@@ -56,7 +70,6 @@
     {% endblock %}
   </main>
 
- 
   {% block footer %}
   <footer class="bg-dark text-white text-center py-3 mt-5">
     <div class="container">
@@ -65,7 +78,7 @@
   </footer>
   {% endblock %}
 
-  <!-- ======= SCRIPT DE SCROLL ======= -->
+  <!-- SCRIPT DE SCROLL -->
   <script>
     window.addEventListener("scroll", function() {
       const body = document.querySelector("body");
@@ -76,6 +89,5 @@
       }
     });
   </script>
-
 </body>
 </html>
