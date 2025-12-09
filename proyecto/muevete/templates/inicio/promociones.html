@@ -31,7 +31,9 @@
         <div class="col-lg-4 col-md-6">
           <article class="promo-card premium-card">
             <div class="promo-media">
-              {% if promo.coche.imagen_catalogo %}
+              {% if promo.imagen %}
+                <img src="{{ promo.imagen.url }}" alt="{{ promo.titulo }}">
+              {% elif promo.coche.imagen_catalogo %}
                 <img src="{{ promo.coche.imagen_catalogo.url }}" alt="{{ promo.coche.nombre }}">
               {% else %}
                 <img src="{% static 'inicio/images/default-car.jpg' %}" alt="sin imagen">
@@ -98,4 +100,3 @@
 </section>
 
 {% endblock %}
-

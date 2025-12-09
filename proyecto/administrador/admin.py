@@ -54,7 +54,7 @@ class AutoAdmin(admin.ModelAdmin):
 # --- ADMIN Promocion ---
 @admin.register(Promocion)
 class PromocionAdmin(admin.ModelAdmin):
-    list_display = ('titulo', 'coche', 'descuento', 'fecha_inicio', 'fecha_fin')
+    list_display = ('titulo', 'coche', 'descuento', 'fecha_inicio', 'fecha_fin','imagen')
     search_fields = ('titulo', 'coche__nombre')
     list_filter = ('fecha_inicio', 'fecha_fin')
 
