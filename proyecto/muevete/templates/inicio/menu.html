@@ -45,9 +45,8 @@
 
        <!-- Usuario a la derecha -->
           <div class="ms-auto d-flex align-items-center gap-3">
+            <span style="color: white; font-weight: 700; font-size: 2rem; margin: 0 235px;"></span>
             {% if request.user.is_authenticated %}
-            <!-- Separador blanco y grueso -->
-              <span style="color: white; font-weight: 700; font-size: 2rem; margin: 0 235px;"></span>
               <span class="text-white fw-bold" style="color: white; font-weight: 700;">
                 {{ request.user.first_name|default:request.user.username }}
               </span>

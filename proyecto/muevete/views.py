@@ -165,10 +165,6 @@ def alta_autos(request):
 def alta_registros(request):
     return render(request, 'inicio/registro.html')
 
-
-
-
-
 logger = logging.getLogger(__name__)
 def login_view(request):
     """
@@ -216,7 +212,7 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     messages.info(request, "Has cerrado sesión.")
-    return redirect('inicio')
+    return redirect('Home')
 
 
 
